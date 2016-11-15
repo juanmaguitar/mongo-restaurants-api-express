@@ -1,22 +1,20 @@
-var getCursor = require('../../_utils').getCursor;
-var ObjectID = require('mongodb').ObjectID;
+const ObjectID = require('mongodb').ObjectID;
 
 function byId(db, req, res) {
 
-	var filter;
+	const getCursor = req.locals.getCursor;
 
-	var restaurants = db.collection('restaurants');
+	const collection = db.collection('restaurants');
+	const { id } = req.params;
+	const filter = id ? { _id: ObjectID(id) } : null;
+	console.log (filter)
 
-	if (req.params && req.params.id) {
-		filter = { _id: ObjectID(req.params.id) }
-	}
+	const cursor = getCursor(collection, filter )
 
-	var cursor = getCursor(restaurants, req, filter )
 
-	cursor.toArray(function(err, docs) {
-			if (err) throw err;
-			res.json(docs);
-	});
+	collection.find(filter).toArray()
+		.then( docs => res.json(docs) )
+		.catch( err => new Error(err) )
 
 }
 

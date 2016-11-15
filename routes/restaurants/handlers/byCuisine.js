@@ -1,27 +1,20 @@
-var getCursor = require('../../_utils').getCursor;
-
 function byCuisine(db, not, req, res ) {
 
-	var filter;
+	const getCursor = req.locals.getCursor;
 
-	var restaurants = db.collection('restaurants');
+	const collection = db.collection('restaurants');
+	const { cuisine } = req.params;
+	let filter = cuisine ? { cuisine } : null;
 
-	if (req.params && req.params.cuisine) {
-		if ( not ) {
-			filter = { cuisine: { $ne: req.params.cuisine } }
-		}
-		else {
-			filter = { cuisine: req.params.cuisine }
-		}
-
+	if ( cuisine && not ) {
+		filter = { cuisine: { $ne: cuisine } }
 	}
 
-	var cursor = getCursor(restaurants, req, filter )
+	const cursor = getCursor( collection, filter )
 
-	cursor.toArray(function(err, docs) {
-			if (err) throw err;
-			res.json(docs);
-	});
+	cursor.toArray()
+		.then ( docs => res.json(docs) )
+		.catch( err => new Error(err) )
 
 }
 

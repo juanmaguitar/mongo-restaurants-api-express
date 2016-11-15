@@ -1,16 +1,11 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-var params = require('../_params');
-
-var getAll = require('./handlers/getAll');
-var byBorough = require('./handlers/byBorough');
-var byCuisine = require('./handlers/byCuisine');
-
+const getAll = require('./handlers/getAll');
+const byBorough = require('./handlers/byBorough');
+const byCuisine = require('./handlers/byCuisine');
 
 function getRouter(db) {
-
-	router.use( params )
 
 	router.get('/', getAll.bind(null, db) )
 	router.get('/borough/:borough', byBorough.bind(null, db) )

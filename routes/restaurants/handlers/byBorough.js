@@ -1,21 +1,16 @@
-var getCursor = require('../../_utils').getCursor;
-
 function byBorough(db, req, res) {
 
-	var filter;
+	const getCursor = req.locals.getCursor;
 
-	var restaurants = db.collection('restaurants');
+	const collection = db.collection('restaurants');
+	const { borough } = req.params;
+	const filter = borough ? { borough } : null;
 
-	if (req.params && req.params.borough) {
-		filter = { borough: req.params.borough }
-	}
+	const cursor = getCursor(collection, filter )
 
-	var cursor = getCursor(restaurants, req, filter )
-
-	cursor.toArray(function(err, docs) {
-			if (err) throw err;
-			res.json(docs);
-	});
+	cursor.toArray()
+		.then( docs => res.json(docs) )
+		.catch( err => new Error(err) )
 
 }
 

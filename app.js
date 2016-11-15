@@ -1,25 +1,30 @@
-var express = require('express');
-var MongoClient = require('mongodb').MongoClient;
-var getRouterRestaurants = require('./routes/restaurants');
-var getRouterRestaurant = require('./routes/restaurant');
+const express = require('express');
+const MongoClient = require('mongodb').MongoClient;
 
-var app = express();
+const getRouterRestaurants = require('./routes/restaurants');
+const getRouterRestaurant = require('./routes/restaurant');
+
+const prepareParams = require('./routes/middleware/prepareParams');
+
+const PORT = 3000;
+
+const app = express();
+
+app.use( express.static('public') )
+app.use( prepareParams )
 
 // Connection URL
-var url = 'mongodb://localhost:27017/test';
+const url = 'mongodb://localhost:27017/test';
 
-// Use connect method to connect to the Server
-var db = MongoClient.connect(url)
+MongoClient.connect(url)
+	.then( (db) => {
 
-db.then(function(db){
+		console.log("Connected to DB...")
 
-	app.use('/restaurants', getRouterRestaurants(db) )
-	app.use('/restaurant', getRouterRestaurant(db) )
+		app.use('/restaurants', getRouterRestaurants(db) )
+		app.use('/restaurant', getRouterRestaurant(db) )
 
-	app.listen(3000, function() {
-		console.log ("listening to port 3000");
 	})
-})
-.catch(function(err) {
-	throw new Error("something failed in the connection");
-})
+	.catch( (err) => new Error('Something failed in the connection') )
+
+app.listen(PORT, () => console.log(`Listening on port ${PORT}...`))

@@ -1,52 +1,50 @@
-var getCursor = require('../../_utils').getCursor;
-var ObjectID = require('mongodb').ObjectID;
+const ObjectID = require('mongodb').ObjectID;
 
 function byAround(db, req, res ) {
 
-	var filterRest, filterAround;
+	const getCursor = req.locals.getCursor;
 
-	var restaurants = db.collection('restaurants');
+	const collection = db.collection('restaurants');
+	const { id } = req.params;
+	const filter = id ? { _id: ObjectID(id) } : null;
 
-	if (req.params && req.params.id) {
-		filterRest = { _id: ObjectID(req.params.id) }
-	}
 
-	var cursorRest = getCursor(restaurants, req, filterRest )
+	const cursorRest = getCursor(collection, filter )
 
-	cursorRest.toArray(function(err, docs) {
+	cursorRest.toArray()
+		.then( docs => {
 
-			if (err) throw err;
-			if (req.params && req.params.km) {
+			const { km } = req.params;
 
-				var km = req.params.km;
-				var longitude = docs[0].address.coord[0];
-				var latitude = docs[0].address.coord[1];
+			if (km) {
 
-				filterAround = getFilterCoord(latitude, longitude, km)
-				cursorAround = getCursor(restaurants, req, filterAround )
+				const [longitude, latitude] = docs[0].address.coord;
+				const filterAround = getFilterCoord(latitude, longitude, km)
 
-				cursorAround.toArray(function(err, docs) {
-					if (err) throw err;
-					res.json(docs);
-				});
+				const cursorAround = getCursor(collection, filterAround )
+
+				cursorAround.toArray()
+					.then( docs => res.json(docs) )
+					.catch( err => new Error(err) )
 
 			}
 
-	});
+		})
+		.catch( err => new Error(err) )
 
 }
 
-// db.restaurants.ensureIndex({ "address.coord":"2dsphere"});
+// db.restaurants.createIndex({ "address.coord":"2dsphere"});
 
 function getFilterCoord( latitude, longitude, km) {
+
+	const type = "Point";
+	const coordinates = [ longitude , latitude ];
 
 	return {
 		"address.coord" : {
 			 $near: {
-					 $geometry: {
-							type: "Point" ,
-							coordinates: [ longitude , latitude ]
-					 },
+					 $geometry: { type, coordinates },
 					 $maxDistance: km*1000
 				}
 			}

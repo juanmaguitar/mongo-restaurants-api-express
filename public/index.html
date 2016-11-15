@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Base Project</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+	<header>
+		<div ng-include src="'views/navbar.html'"></div>
+	</header>
+
+	<main class="container">
+		<ng-view></ng-view>
+	</main>
+
+	<footer></footer>
+
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.js"></script>
+
+	<script src="js/controllers/index.js"></script>
+	<script src="js/services/index.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>

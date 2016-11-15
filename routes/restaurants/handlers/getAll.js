@@ -1,14 +1,13 @@
-var getCursor = require('../../_utils').getCursor;
-
 function getAll(db, req, res) {
 
-	var restaurants = db.collection('restaurants');
-	var cursor = getCursor( restaurants, req )
+	const getCursor = req.locals.getCursor;
 
-	cursor.toArray(function(err, docs) {
-			if (err) throw err;
-			res.json(docs);
-	});
+	const collection = db.collection('restaurants');
+	const cursor = getCursor( collection )
+
+	cursor.toArray()
+		.then( docs => res.json(docs) )
+		.catch( err => {throw err} )
 
 }
 
