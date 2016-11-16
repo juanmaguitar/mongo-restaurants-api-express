@@ -13,7 +13,10 @@
 
 		<form ng-controller="SearchCtrl" class="navbar-form navbar-right" role="search">
 			<div class="form-group">
-				<input ng-model="querySearch" type="text" class="form-control" placeholder="Search item...">
+				<input ng-model="neighborhoodSearch" type="text" class="form-control" placeholder="Type a neighborhood..." list="boroughs">
+				<datalist id="boroughs">
+				  <option ng-repeat="borough in boroughs" value="{{ borough }}">
+				</datalist>
 			</div>
 			<button type="submit" ng-click="searchItems($event)" class="btn btn-default">Search</button>
 		</form>

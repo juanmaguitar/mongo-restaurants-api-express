@@ -1,3 +1,20 @@
+.navbar {
+	margin:0;
+}
 .search-results li {
 	border:1px solid red;
+}
+
+#results-container {
+	display:flex;
+}
+
+#results {
+	width: 60%
+}
+#map {
+	width: 60%;
+}
+#map > * {
+	height:100vh;
 }

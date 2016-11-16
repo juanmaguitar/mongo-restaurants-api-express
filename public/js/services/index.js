@@ -5,10 +5,14 @@ angular.module('myServices', [])
 			const url = '/restaurants';
 
 			function getRestaurants( query ) {
-
 				return $http.get( url, { params: { limit } } )
 											.then( d => d.data )
+			}
 
+			function getBoroughs() {
+				const url = '/boroughs';
+				return $http.get( url, { params: { limit } } )
+											.then( d => d.data )
 			}
 
 			return { getRestaurants }
