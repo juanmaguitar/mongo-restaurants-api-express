@@ -11,12 +11,8 @@
 
 	</div>
 
-	<div id="map" map-lazy-load="https://maps.google.com/maps/api/js"
-	  map-lazy-load-params="{{googleMapsUrl}}">
-	  <ng-map center="40.579505,-73.98241999999999" zoom="10">
-	  	<marker ng-repeat="restaurant in restaurants" position="[{{ restaurant.address.coord[1] }}, {{restaurant.address.coord[0]}}  ]" />
-	  </ng-map>
-
+	<div id="map" >
+	  <ng-map center="40.579505,-73.98241999999999" zoom="10"></ng-map>
 	</div>
 
 </div>

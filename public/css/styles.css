@@ -1,9 +1,6 @@
 .navbar {
 	margin:0;
 }
-.search-results li {
-	border:1px solid red;
-}
 
 #results-container {
 	display:flex;
@@ -16,5 +13,7 @@
 	width: 60%;
 }
 #map > * {
-	height:100vh;
+	width: 500px;
+	height: 500px;
+	/* height:90vh; */
 }

@@ -24,6 +24,12 @@ MongoClient.connect(url)
 		app.use('/restaurants', getRouterRestaurants(db) )
 		app.use('/restaurant', getRouterRestaurant(db) )
 
+		app.get('/boroughs', (req,res) => {
+			db.collection('restaurants').distinct("borough")
+						.then( boroughs => res.json(boroughs) )
+						.catch( err => new Error(err) )
+		})
+
 	})
 	.catch( (err) => new Error('Something failed in the connection') )
 

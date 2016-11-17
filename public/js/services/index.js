@@ -2,19 +2,24 @@ angular.module('myServices', [])
 	.factory("DataService", function( $http ) {
 
 			const limit = 20;
-			const url = '/restaurants';
 
-			function getRestaurants( query ) {
+			function getRestaurants() {
+				const url = '/restaurants';
+				return $http.get( url, { params: { limit } } )
+											.then( d => d.data )
+			}
+
+			function getRestaurantsByBorough( borough ) {
+				const url = '/restaurants/borough/' + borough;
 				return $http.get( url, { params: { limit } } )
 											.then( d => d.data )
 			}
 
 			function getBoroughs() {
 				const url = '/boroughs';
-				return $http.get( url, { params: { limit } } )
-											.then( d => d.data )
+				return $http.get( url ).then( d => d.data )
 			}
 
-			return { getRestaurants }
+			return { getRestaurants, getBoroughs, getRestaurantsByBorough }
 
 	})
