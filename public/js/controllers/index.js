@@ -30,21 +30,13 @@ angular.module('myControllers', ['myServices'])
                   map: map,
                   title: 'Hello World!'
                 });
+
                 $rootScope.markers.push(marker)
-                bounds.extend(myLatLng);
+                bounds.extend( marker.position );
 
               })
 
-              map.fitBounds( bounds );
-
-              // let markers = map.markers;
-              // let bounds = new google.maps.LatLngBounds()
-              // for (num in markers) {
-              //  bounds.extend( markers[num].getPosition() )
-              // }
-              // console.log (bounds.getCenter())
-            //  //map.setCenter( bounds.getCenter() );
-            //  map.fitBounds( bounds );
+            map.fitBounds( bounds );
 
             })
         })
@@ -59,7 +51,7 @@ angular.module('myControllers', ['myServices'])
         .then( () =>  NgMap.getMap() )
         .then( (map) => {
 
-           let bounds = new google.maps.LatLngBounds()
+          let bounds = new google.maps.LatLngBounds()
 
           $rootScope.markers.forEach( marker => marker.setMap(null) )
           $rootScope.restaurants.forEach( rest => {
@@ -73,24 +65,15 @@ angular.module('myControllers', ['myServices'])
               title: 'Hello World!'
             });
             $rootScope.markers.push(marker)
-            bounds.extend(myLatLng);
+            bounds.extend(marker.position);
 
           })
+
 
           map.fitBounds( bounds );
 
 
-          // let markers = map.markers;
-          // let bounds = new google.maps.LatLngBounds()
-          // for (num in markers) {
-          //   bounds.extend( markers[num].getPosition() )
-          // }
-          // console.log (bounds.getCenter())
-          // //map.setCenter( bounds.getCenter() );
-          // map.fitBounds( bounds );
-
         })
-        .then( () => $location.path("/results") )
 
 
     }
@@ -105,11 +88,6 @@ angular.module('myControllers', ['myServices'])
 
     const token = 'AIzaSyC-8fnm-fKikIyZvY5Oww9qVdenK_5R3U4';
     $scope.googleMapsUrl=`https://maps.googleapis.com/maps/api/js?key=${token}`
-
-    // window.map = new google.maps.Map(document.getElementById('map'), {
-   //      mapTypeId: google.maps.MapTypeId.ROADMAP
-   //  });
-
 
   })
   .controller('MyController', function(NgMap) {

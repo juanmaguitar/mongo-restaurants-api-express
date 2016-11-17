@@ -1,7 +1,7 @@
 angular.module('myServices', [])
 	.factory("DataService", function( $http ) {
 
-			const limit = 20;
+			const limit = 30;
 
 			function getRestaurants() {
 				const url = '/restaurants';
