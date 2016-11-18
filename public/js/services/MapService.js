@@ -10,14 +10,26 @@ angular.module('myServices')
 		}
 	}
 
-	function createMarker( map, lng, lat ) {
-		var myLatLng = { lat, lng };
+	function createMarker( map, rest ) {
 
-		return new google.maps.Marker({
+		const [ lng, lat ] = rest.address.coord;
+		const myLatLng = { lat, lng };
+
+		const marker = new google.maps.Marker({
 			position: myLatLng,
 			map: map,
 			title: 'Hello World!'
 		});
+
+		const infowindow = new google.maps.InfoWindow({
+	    content: `<h3>${ rest.name }</h3><p>${ rest.borough } | ${ rest.cuisine }</p><p>${ rest.address.zipcode }</p>`
+	  });
+
+	  marker.addListener('click', function() {
+	    infowindow.open(map, marker);
+	  });
+
+	  return marker;
 
 	}
 
@@ -27,8 +39,7 @@ angular.module('myServices')
 
 		$rootScope.restaurants.forEach( rest => {
 
-			const [ lng, lat ] = rest.address.coord;
-			const marker = createMarker( map, lng, lat );
+			const marker = createMarker( map, rest );
 			$rootScope.markers.push(marker)
 			bounds.extend(marker.position);
 

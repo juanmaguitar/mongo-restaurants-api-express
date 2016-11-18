@@ -4,8 +4,9 @@
 
 		<ul class="list-unstyled search-results">
 			<li ng-repeat="restaurant in restaurants">
-				<h2><a href="">{{ restaurant.name }}</a></h2>
-				<h4>{{ restaurant.borough }} | {{ restaurant.cuisine }}</h4>
+				<h2><a href="">{{ restaurant.name }}</a> <small>{{ restaurant.address.zipcode }}</small></h2>
+				<h5>{{ restaurant.borough }} | {{ restaurant.cuisine }}</h5>
+				<p></p>
 			</li>
 		</ul>
 
