@@ -1,95 +1,152 @@
 angular.module('myControllers', ['myServices'])
-  .controller('SearchCtrl', function($scope, $rootScope, DataService, NgMap, $location) {
+.controller('SearchCtrl', function($scope, $rootScope, DataService, NgMap, $location) {
 
-    $scope.querySearch = "tortellini";
+  $scope.querySearch = "tortellini";
 
-    $rootScope.restaurants = [];
-    $rootScope.markers = [];
+})
+.controller('HomeCtrl', function($scope) {
+  $scope.title = "HOME"
+})
+.controller('ByBoroughCtrl', function($scope, $routeParams, $rootScope, DataService, NgMap) {
 
-    DataService.getBoroughs()
-        .then( boroughs => $scope.boroughs = boroughs )
 
-    DataService.getRestaurants()
-        .then( restaurants => {
-          $rootScope.restaurants = restaurants
-          return restaurants;
-        })
-        .then( restaurants => {
-            NgMap.getMap()
-            .then( (map) => {
+    const borough = $routeParams.borough;
 
-              let bounds = new google.maps.LatLngBounds()
 
-              restaurants.forEach( rest => {
+    DataService.getRestaurantsByBorough( borough )
+      .then( restaurants => $rootScope.restaurants = restaurants )
+      .then( () =>  NgMap.getMap() )
+      .then( (map) => {
 
-                const [ lng, lat ] = rest.address.coord;
-                var myLatLng = { lat, lng };
+        let bounds = new google.maps.LatLngBounds()
 
-                var marker = new google.maps.Marker({
-                  position: myLatLng,
-                  map: map,
-                  title: 'Hello World!'
-                });
-
-                $rootScope.markers.push(marker)
-                bounds.extend( marker.position );
-
-              })
-
-            map.fitBounds( bounds );
-
-            })
-        })
-
-    $scope.getByBorough = function(e) {
-
-      if (e) e.preventDefault()
-      const borough = $scope.borough;
-
-      DataService.getRestaurantsByBorough( borough )
-        .then( restaurants => $rootScope.restaurants = restaurants )
-        .then( () =>  NgMap.getMap() )
-        .then( (map) => {
-
-          let bounds = new google.maps.LatLngBounds()
-
+        if ($rootScope.markers && $rootScope.markers.length) {
           $rootScope.markers.forEach( marker => marker.setMap(null) )
-          $rootScope.restaurants.forEach( rest => {
+        }
+        else {
+          $rootScope.markers = [];
+        }
 
-            const [ lng, lat ] = rest.address.coord;
-            var myLatLng = { lat, lng };
+        $rootScope.restaurants.forEach( rest => {
 
-            var marker = new google.maps.Marker({
-              position: myLatLng,
-              map: map,
-              title: 'Hello World!'
-            });
-            $rootScope.markers.push(marker)
-            bounds.extend(marker.position);
+          const [ lng, lat ] = rest.address.coord;
+          var myLatLng = { lat, lng };
 
-          })
-
-
-          map.fitBounds( bounds );
-
+          var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+          });
+          $rootScope.markers.push(marker)
+          bounds.extend(marker.position);
 
         })
 
 
-    }
+        map.fitBounds( bounds );
 
-  })
-  .controller('HomeCtrl', function($scope) {
-    $scope.title = "HOME"
-  })
-  .controller('ResultsCtrl', function($scope, $rootScope, NgMap) {
 
-    $scope.title = "RESTAURANTS"
+      })
 
-    const token = 'AIzaSyC-8fnm-fKikIyZvY5Oww9qVdenK_5R3U4';
-    $scope.googleMapsUrl=`https://maps.googleapis.com/maps/api/js?key=${token}`
 
-  })
-  .controller('MyController', function(NgMap) {
+})
+.controller('ResultsCtrl', function($scope, $rootScope, DataService, NgMap) {
 
-  });
+  $scope.title = "RESTAURANTS"
+
+  DataService.getRestaurants()
+    .then( restaurants => {
+      $rootScope.restaurants = restaurants
+      return restaurants;
+    })
+    .then( restaurants => {
+      NgMap.getMap()
+      .then( (map) => {
+
+        let bounds = new google.maps.LatLngBounds()
+
+        $rootScope.markers = [];
+
+        restaurants.forEach( rest => {
+
+          const [ lng, lat ] = rest.address.coord;
+          var myLatLng = { lat, lng };
+
+          var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+          });
+
+          $rootScope.markers.push(marker)
+          bounds.extend( marker.position );
+
+        })
+
+        map.fitBounds( bounds );
+
+      })
+    })
+
+
+  const token = 'AIzaSyC-8fnm-fKikIyZvY5Oww9qVdenK_5R3U4';
+  $scope.googleMapsUrl=`https://maps.googleapis.com/maps/api/js?key=${token}`
+
+})
+.controller('MyController', function(NgMap) {
+
+})
+.controller('MenuCtrl', function ($scope, $rootScope, NgMap, $routeParams, DataService ) {
+
+  DataService.getBoroughs()
+    .then( boroughs => $scope.boroughs = boroughs )
+
+  DataService.getCuisines()
+    .then( cuisines => $scope.cuisines = cuisines )
+
+
+  $scope.getByCuisine = function(cuisine){
+
+
+    DataService.getRestaurantsByCuisine( cuisine )
+      .then( restaurants => $rootScope.restaurants = restaurants )
+      .then( () =>  NgMap.getMap() )
+      .then( (map) => {
+
+        let bounds = new google.maps.LatLngBounds()
+
+        if ($rootScope.markers && $rootScope.markers.length) {
+          $rootScope.markers.forEach( marker => marker.setMap(null) )
+        }
+        else {
+          $rootScope.markers = [];
+        }
+
+        $rootScope.restaurants.forEach( rest => {
+
+          const [ lng, lat ] = rest.address.coord;
+          var myLatLng = { lat, lng };
+
+          var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+          });
+          $rootScope.markers.push(marker)
+          bounds.extend(marker.position);
+
+        })
+
+
+        map.fitBounds( bounds );
+
+
+      })
+
+
+  }
+
+
+});
+
+

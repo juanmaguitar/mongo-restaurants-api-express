@@ -30,6 +30,12 @@ MongoClient.connect(url)
 						.catch( err => new Error(err) )
 		})
 
+		app.get('/cuisines', (req,res) => {
+			db.collection('restaurants').distinct("cuisine")
+						.then( cuisines => res.json(cuisines) )
+						.catch( err => new Error(err) )
+		})
+
 	})
 	.catch( (err) => new Error('Something failed in the connection') )
 

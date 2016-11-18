@@ -1,4 +1,4 @@
-angular.module('myApp', ['ngRoute', 'ngMap', 'myControllers'])
+angular.module('myApp', ['ngRoute', 'ngMap', 'my.ui.bootstrap', 'myControllers'])
 	.config( function ($routeProvider) {
 
 		$routeProvider
@@ -9,6 +9,10 @@ angular.module('myApp', ['ngRoute', 'ngMap', 'myControllers'])
       .when('/', {
         templateUrl: 'views/results.html',
         controller: 'ResultsCtrl'
+      })
+      .when('/borough/:borough', {
+        templateUrl: 'views/results.html',
+        controller: 'ByBoroughCtrl'
       })
       .otherwise({
         redirectTo: '/'
