@@ -1,3 +1,8 @@
+body {
+  min-height: 2000px;
+  padding-top: 50px;
+}
+
 .navbar {
 	margin:0;
 }
@@ -13,7 +18,7 @@
 	width: 60%;
 }
 #map > * {
-	width: 500px;
-	height: 500px;
-	/* height:90vh; */
+	position: fixed;
+	height:90vh;
+	width: 50%;
 }
