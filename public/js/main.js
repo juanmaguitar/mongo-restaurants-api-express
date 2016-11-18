@@ -14,6 +14,10 @@ angular.module('myApp', ['ngRoute', 'ngMap', 'my.ui.bootstrap', 'myControllers']
         templateUrl: 'views/results.html',
         controller: 'ByBoroughCtrl'
       })
+      .when('/cuisines/:cuisine', {
+        templateUrl: 'views/results.html',
+        controller: 'ByCuisineCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
