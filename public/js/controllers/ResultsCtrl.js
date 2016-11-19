@@ -1,13 +1,22 @@
 angular.module('myControllers')
-	.controller('ResultsCtrl', function($scope, $rootScope, DataService, MapService, NgMap) {
+  .controller('ResultsCtrl', function($scope, $rootScope, DataService, MapService, NgMap) {
 
-	  $scope.title = "RESTAURANTS"
+    const page = 1;
+    $scope.title = "RESTAURANTS"
 
-	  DataService.getRestaurants()
-	    .then( restaurants => $rootScope.restaurants = restaurants )
-	    .then( MapService.getMarkers )
+    $scope.setPage = function (page) {
 
-	  const token = 'AIzaSyC-8fnm-fKikIyZvY5Oww9qVdenK_5R3U4';
-	  $scope.googleMapsUrl=`https://maps.googleapis.com/maps/api/js?key=${token}`
+      DataService.getRestaurants(page)
+        .then( rests => $rootScope.restaurants = rests )
+        .then( MapService.getMarkers )
 
-	})
+    };
+
+    DataService.getRestaurants(page)
+      .then( rests => $rootScope.restaurants = rests )
+      .then( MapService.getMarkers )
+
+    const token = 'AIzaSyC-8fnm-fKikIyZvY5Oww9qVdenK_5R3U4';
+    $scope.googleMapsUrl=`https://maps.googleapis.com/maps/api/js?key=${token}`
+
+  })

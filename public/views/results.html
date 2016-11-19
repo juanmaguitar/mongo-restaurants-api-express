@@ -1,14 +1,22 @@
 <div id="results-container">
 
 	<div id="results">
+		<h3>{{ totalResults }} restaurants found </h3>
+		<h5>Showing page {{ currentPage }} of {{ totalPages }}</h5>
+
+		<ul uib-pagination total-items="totalResults" ng-model="currentPage" max-size="maxSize" class="pagination-sm" ng-change="setPage(currentPage)" boundary-link-numbers="true" rotate="false"></ul>
+
 
 		<ul class="list-unstyled search-results">
 			<li ng-repeat="restaurant in restaurants">
-				<h2><a href="">{{ restaurant.name }}</a> <small>{{ restaurant.address.zipcode }}</small></h2>
+				<h2><a href="">{{ restaurant.name }}</a> </h2>
 				<h5>{{ restaurant.borough }} | {{ restaurant.cuisine }}</h5>
-				<p></p>
+				<p>{{ restaurant.address.street }}, {{ restaurant.address.building }} | {{ restaurant.address.zipcode }} <button class="glyphicon glyphicon-map-marker" ng-click="setCenter(restaurant.address.coord)"></button></p>
+
 			</li>
 		</ul>
+
+		 <ul uib-pagination total-items="totalResults" ng-model="currentPage" max-size="maxSize" class="pagination-sm" ng-change="setPage(currentPage)" boundary-link-numbers="true" rotate="false"></ul>
 
 	</div>
 

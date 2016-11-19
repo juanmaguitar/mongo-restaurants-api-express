@@ -1,24 +1,43 @@
 angular.module('myServices')
-	.factory("DataService", function( $http ) {
+	.factory("DataService", function( $http, $rootScope, $location ) {
 
 			const limit = 10;
+			$rootScope.maxSize = 5;
 
-			function getRestaurants() {
+			// $rootScope.setPage = function(page) {
+			// 	console.log($location)
+	  //     console.log('Page changed to: ' + page);
+	  //   };
+
+			// $rootScope.currentPage
+
+			// $rootScope.$watch('currentPage')
+
+
+			function getPages( page, d ) {
+				const { data } = d;
+				$rootScope.totalResults = data.total;
+				$rootScope.totalPages = Math.round(data.total/limit);
+				$rootScope.currentPage = page;
+				return data.docs;
+			}
+
+			function getRestaurants( page ) {
 				const url = '/restaurants';
-				return $http.get( url, { params: { limit } } )
-											.then( d => d.data )
+				return $http.get( url, { params: { limit, page } } )
+											.then( getPages.bind(null, page) )
 			}
 
-			function getRestaurantsByBorough( borough ) {
+			function getRestaurantsByBorough( page, borough ) {
 				const url = '/restaurants/borough/' + borough;
-				return $http.get( url, { params: { limit } } )
-											.then( d => d.data )
+				return $http.get( url, { params: { limit, page } } )
+											.then( getPages.bind(null, page) )
 			}
 
-			function getRestaurantsByCuisine( borough ) {
+			function getRestaurantsByCuisine( page, borough ) {
 				const url = '/restaurants/cuisine/' + borough;
-				return $http.get( url, { params: { limit } } )
-											.then( d => d.data )
+				return $http.get( url, { params: { limit, page } } )
+											.then( getPages.bind(null, page) )
 			}
 
 			function getBoroughs() {

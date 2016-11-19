@@ -12,9 +12,17 @@ function byCuisine(db, not, req, res ) {
 
 	const cursor = getCursor( collection, filter )
 
-	cursor.toArray()
-		.then ( docs => res.json(docs) )
-		.catch( err => new Error(err) )
+	let total;
+
+	collection
+		.find(filter)
+		.count()
+		.then( totalFound => {
+			total = totalFound;
+			return cursor.toArray();
+		})
+		.then( docs => res.json({ total, docs}) )
+		.catch( err => {throw err} )
 
 }
 
