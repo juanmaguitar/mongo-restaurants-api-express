@@ -1,15 +1,16 @@
 <div id="results-container">
 
 	<div id="results">
-		<h2>Restaurants</h2>
-		<h3 ng-show="borough">Borough : {{borough}} </h3>
-		<h3 ng-show="cuisine">Cuisine : {{cuisine}} </h3>
-		<h3>{{ totalResults }} restaurants found </h3>
+
+    <h3>{{ totalResults }} restaurants found
+    	<span ng-show="filters.borough">in borough <strong>{{filters.borough}}</strong> </span>
+    	<span ng-show="filters.cuisine">with cuisine <strong>{{filters.cuisine}}</strong> </span>
 		<h5>Showing page {{ currentPage }} of {{ totalPages }}</h5>
 
 		<!-- <ul uib-pagination total-items="totalResults" ng-model="currentPage" max-size="maxSize" class="pagination-sm" ng-change="setPage(currentPage)" boundary-link-numbers="true" rotate="false"></ul>
  -->
 
+		<hr>
 		<ul class="list-unstyled search-results">
 			<li ng-repeat="restaurant in restaurants">
 				<h2><a href="">{{ restaurant.name }}</a> </h2>
@@ -19,6 +20,7 @@
 			</li>
 		</ul>
 
+		<hr>
 		 <ul uib-pagination total-items="totalResults" ng-model="currentPage" max-size="maxSize" class="pagination-sm" ng-change="setPage(currentPage)" boundary-link-numbers="true" rotate="false"></ul>
 
 	</div>

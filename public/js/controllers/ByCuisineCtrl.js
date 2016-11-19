@@ -4,6 +4,8 @@ angular.module('myControllers')
 			const page = 1;
       const cuisine = $routeParams.cuisine;
 
+      $rootScope.filters = { cuisine }
+
       $scope.setPage = function (page) {
 
 				DataService.getRestaurantsByCuisine( page, cuisine )
