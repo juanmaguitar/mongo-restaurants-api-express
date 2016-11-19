@@ -4,16 +4,6 @@ angular.module('myServices')
 			const limit = 10;
 			$rootScope.maxSize = 5;
 
-			// $rootScope.setPage = function(page) {
-			// 	console.log($location)
-	  //     console.log('Page changed to: ' + page);
-	  //   };
-
-			// $rootScope.currentPage
-
-			// $rootScope.$watch('currentPage')
-
-
 			function getPages( page, d ) {
 				const { data } = d;
 				$rootScope.totalResults = data.total;

@@ -9,14 +9,14 @@
 	<link rel="stylesheet" href="css/ui-bootstrap-custom-2.2.0-csp.css">
 	<link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body id="topScroll">
 
 	<header>
 		<div ng-include src="'views/navbar.html'"></div>
 	</header>
 
 	<main class="container">
-		<ng-view></ng-view>
+		<ng-view autoscroll="true"></ng-view>
 	</main>
 
 	<footer></footer>
