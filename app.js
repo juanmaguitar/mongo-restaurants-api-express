@@ -1,5 +1,6 @@
 const express = require('express');
 const MongoClient = require('mongodb').MongoClient;
+const bodyParser = require('body-parser')
 
 const getRouterRestaurants = require('./routes/restaurants');
 const getRouterRestaurant = require('./routes/restaurant');
@@ -10,7 +11,15 @@ const PORT = 3000;
 
 const app = express();
 
+// set folder to serve static files => angular app
 app.use( express.static('public') )
+
+// parse application/x-www-form-urlencoded
+app.use( bodyParser.urlencoded({ extended: false }) )
+
+// parse application/json
+app.use( bodyParser.json() )
+
 app.use( prepareParams )
 
 // Connection URL

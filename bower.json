@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "ngmap": "^1.17.8",
-    "bootstrap-material-design": "^4.0.2"
+    "bootstrap-material-design": "^4.0.2",
+    "underscore": "^1.8.3"
   }
 }

@@ -10,19 +10,22 @@ angular.module('myServices')
 		}
 	}
 
-	function createMarker( map, rest ) {
+	function createMarker( map, rest, customOptions = {} ) {
 
 		const [ lng, lat ] = rest.address.coord;
 		const myLatLng = { lat, lng };
-
-		const marker = new google.maps.Marker({
+		let defaultOptions = {
 			position: myLatLng,
 			map: map,
 			title: 'Hello World!'
-		});
+		};
+
+		const options = _.extend( defaultOptions, customOptions)
+
+		const marker = new google.maps.Marker(options);
 
 		const infowindow = new google.maps.InfoWindow({
-	    content: `<h3>${ rest.name }</h3><p>${ rest.borough } | ${ rest.cuisine }</p><p>${ rest.address.zipcode }</p>`
+	    content: `<h3><a href="#/details/${rest._id}">${ rest.name }</h3><p>${ rest.borough } | ${ rest.cuisine }</p><p>${ rest.address.zipcode }</p>`
 	  });
 
 	  marker.addListener('click', function() {
@@ -49,6 +52,36 @@ angular.module('myServices')
 
 	}
 
+	function getDetailsMarker(idMap, rest ){
+
+		let optionsMarker = {
+			animation: google.maps.Animation.DROP
+		};
+
+		if (idMap == "edit-map") {
+			optionsMarker = _.extend( optionsMarker, {
+				draggable: true
+			})
+		}
+
+		return NgMap.getMap({ id: idMap })
+			.then( (map) => {
+
+				const prevMarker = getDetailsMarker.marker;
+				const [ lat, lng ] = rest.address.coord;
+				const myLatlng = new google.maps.LatLng(lng, lat);
+
+				prevMarker ? prevMarker.setMap(null) : null;
+				getDetailsMarker.marker = createMarker( map, rest, optionsMarker );
+
+				map.setZoom(16);
+  			map.panTo(myLatlng)
+
+  			return getDetailsMarker.marker;
+
+			})
+
+	}
 
 	function getMarkers() {
 		cleanMarkers();
@@ -69,6 +102,6 @@ angular.module('myServices')
   }
 
 
-	return { getMarkers }
+	return { getMarkers, getDetailsMarker }
 
 })

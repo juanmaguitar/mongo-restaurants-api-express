@@ -1,21 +1,36 @@
 <div id="details-container">
 
 	<div id="details">
+		<header>
 
+			<h2><a href="">{{ restaurant.name }}</a> </h2>
+			<h5>Borough: <strong>{{ restaurant.borough }}</strong></h5>
+			<h5>Cuisine: <strong>{{ restaurant.cuisine }}</strong></h5>
+			<p>{{ restaurant.address.street }}, {{ restaurant.address.building }} | {{ restaurant.address.zipcode }}</p>
 
-		<ul class="list-unstyled search-results">
-			<li ng-repeat="restaurant in restaurants">
-				<h2><a href="">{{ restaurant.name }}</a> </h2>
-				<h5>{{ restaurant.borough }} | {{ restaurant.cuisine }}</h5>
-				<p>{{ restaurant.address.street }}, {{ restaurant.address.building }} | {{ restaurant.address.zipcode }} <button class="glyphicon glyphicon-map-marker" ng-click="setCenter(restaurant.address.coord)"></button></p>
+		</header>
 
-			</li>
-		</ul>
+		<div class="grades">
+
+			<h4>Grades:</h4>
+			<ul class="list-unstyled">
+				<li ng-repeat="g in restaurant.grades">
+					<h5>
+						<span class="grade" ng-class="g.grade">{{g.grade}}</span>
+						<span class="score" ng-class="g.grade">{{g.score}}</span>
+						<small class="date">{{ g.date | date:'dd/MM/yyyy' }}</small>
+					</h5>
+				</li>
+			</ul>
+
+		</div>
+
+		<a href="#/edit/{{ restaurant._id }}" class="btn btn-raised btn-primary">Edit Restaurant</a>
 
 	</div>
 
 	<div id="map" >
-	  <ng-map id="main-map" center="40.579505,-73.98241999999999" zoom="10"></ng-map>
+	  <ng-map id="details-map" center="40.579505,-73.98241999999999" zoom="10"></ng-map>
 	</div>
 
 </div>
