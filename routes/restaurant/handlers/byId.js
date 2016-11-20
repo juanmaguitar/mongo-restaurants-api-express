@@ -7,7 +7,6 @@ function byId(db, req, res) {
 	const collection = db.collection('restaurants');
 	const { id } = req.params;
 	const filter = id ? { _id: ObjectID(id) } : null;
-	console.log (filter)
 
 	const cursor = getCursor(collection, filter )
 

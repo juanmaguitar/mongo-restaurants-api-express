@@ -28,7 +28,6 @@
             </fieldset>
             <fieldset>
             	<legend>Address</legend>
-            </fieldset>
               <div class="form-group">
                 <label for="inputStreet" class="col-md-2 control-label">Street</label>
                 <div class="col-md-10">
@@ -55,6 +54,22 @@
                 </div>
               </div>
 
+
+            </fieldset>
+
+            <fieldset>
+              <legend>Image</legend>
+
+               <div class="form-group">
+                <label for="exampleInputFile" class="col-md-2 control-label">File input</label>
+                <div class="col-md-10">
+                  <input type="file" custom-on-change="uploadImage"/>
+                  <input hidden name="file" ng-value="getImage()"/>
+                  <style id="styles-preview-image"></style>
+                  <img id="preview-image" >
+                  <p>{{getImage()}}</p>
+                </div>
+              </div>
 
             </fieldset>
           </form>

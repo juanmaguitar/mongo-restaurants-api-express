@@ -4,8 +4,8 @@
 		<header>
 
 			<h2><a href="">{{ restaurant.name }}</a> </h2>
-			<h5>Borough: <strong>{{ restaurant.borough }}</strong></h5>
-			<h5>Cuisine: <strong>{{ restaurant.cuisine }}</strong></h5>
+			<h5>Borough: <strong><a ng-href="#/borough/{{ restaurant.borough }}">{{ restaurant.borough }}</a></strong></h5>
+			<h5>Cuisine: <a ng-href="#/cuisines/{{ restaurant.cuisine }}"><strong>{{ restaurant.cuisine }}</strong></a></h5>
 			<p>{{ restaurant.address.street }}, {{ restaurant.address.building }} | {{ restaurant.address.zipcode }}</p>
 
 		</header>

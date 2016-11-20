@@ -1,4 +1,10 @@
-angular.module('myApp', ['ngRoute', 'ngMap', 'my.ui.bootstrap', 'myControllers'])
+angular.module('myApp', [
+    'ngRoute',
+    'ngMap',
+    'my.ui.bootstrap',
+    'myControllers',
+    'myDirectives'
+  ])
 	.config( function ($routeProvider) {
 
 		$routeProvider
