@@ -5,8 +5,7 @@ angular.module('myControllers')
       $anchorScroll,
       $location,
       DataService,
-      MapService,
-      NgMap
+      MapService
   ) {
 
     const page = 1;

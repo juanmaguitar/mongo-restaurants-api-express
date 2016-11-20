@@ -1,0 +1,21 @@
+<div id="details-container">
+
+	<div id="details">
+
+
+		<ul class="list-unstyled search-results">
+			<li ng-repeat="restaurant in restaurants">
+				<h2><a href="">{{ restaurant.name }}</a> </h2>
+				<h5>{{ restaurant.borough }} | {{ restaurant.cuisine }}</h5>
+				<p>{{ restaurant.address.street }}, {{ restaurant.address.building }} | {{ restaurant.address.zipcode }} <button class="glyphicon glyphicon-map-marker" ng-click="setCenter(restaurant.address.coord)"></button></p>
+
+			</li>
+		</ul>
+
+	</div>
+
+	<div id="map" >
+	  <ng-map id="main-map" center="40.579505,-73.98241999999999" zoom="10"></ng-map>
+	</div>
+
+</div>

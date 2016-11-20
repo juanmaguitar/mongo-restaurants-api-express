@@ -1,5 +1,5 @@
 angular.module('myControllers')
-	.controller('MenuCtrl', function ($scope, $location, $rootScope, NgMap, $routeParams, DataService ) {
+	.controller('MenuCtrl', function ($scope, $location, DataService ) {
 
 	  DataService.getBoroughs()
 	    .then( boroughs => $scope.boroughs = boroughs )

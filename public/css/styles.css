@@ -12,8 +12,15 @@ body {
 }
 
 #results {
-	width: 60%
+	width: 60%;
 }
+
+#results header {
+	margin: 40px 0 20px;
+	border-bottom: 1px solid #ccc;
+	width: 95%;
+}
+
 #map {
 	width: 60%;
 }

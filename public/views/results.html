@@ -2,15 +2,19 @@
 
 	<div id="results">
 
-    <h3>{{ totalResults }} restaurants found
-    	<span ng-show="filters.borough">in borough <strong>{{filters.borough}}</strong> </span>
-    	<span ng-show="filters.cuisine">with cuisine <strong>{{filters.cuisine}}</strong> </span>
-		<h5>Showing page {{ currentPage }} of {{ totalPages }}</h5>
+		<header>
+
+	    <h3>{{ totalResults }} restaurants found
+	    	<span ng-show="filters.borough">in borough <strong>{{filters.borough}}</strong> </span>
+	    	<span ng-show="filters.cuisine">with cuisine <strong>{{filters.cuisine}}</strong> </span>
+			<h5>Showing page {{ currentPage }} of {{ totalPages }}</h5>
+
+		</header>
 
 		<!-- <ul uib-pagination total-items="totalResults" ng-model="currentPage" max-size="maxSize" class="pagination-sm" ng-change="setPage(currentPage)" boundary-link-numbers="true" rotate="false"></ul>
  -->
 
-		<hr>
+
 		<ul class="list-unstyled search-results">
 			<li ng-repeat="restaurant in restaurants">
 				<h2><a href="">{{ restaurant.name }}</a> </h2>
@@ -26,7 +30,7 @@
 	</div>
 
 	<div id="map" >
-	  <ng-map center="40.579505,-73.98241999999999" zoom="10"></ng-map>
+	  <ng-map id="main-map" center="40.579505,-73.98241999999999" zoom="10"></ng-map>
 	</div>
 
 </div>

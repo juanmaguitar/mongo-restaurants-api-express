@@ -1,5 +1,11 @@
 angular.module('myControllers')
-  .controller('ByCuisineCtrl', function($scope, MapService, $routeParams, $rootScope, DataService, NgMap) {
+  .controller('ByCuisineCtrl', function(
+    $scope,
+    $rootScope,
+    MapService,
+    $routeParams,
+    DataService
+  ) {
 
 			const page = 1;
       const cuisine = $routeParams.cuisine;

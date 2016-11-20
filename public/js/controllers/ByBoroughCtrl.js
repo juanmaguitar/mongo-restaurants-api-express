@@ -1,5 +1,11 @@
 angular.module('myControllers')
-  .controller('ByBoroughCtrl', function($scope, MapService, $routeParams, $rootScope, DataService, NgMap) {
+  .controller('ByBoroughCtrl', function(
+    $scope,
+    $rootScope,
+    MapService,
+    $routeParams,
+    DataService
+  ) {
 
 			const page = 1;
       const borough = $routeParams.borough;

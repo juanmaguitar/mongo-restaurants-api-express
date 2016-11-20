@@ -16,7 +16,7 @@
       <ul class="nav navbar-nav">
 
         <li uib-dropdown is-open="status.boroughs.isopen" >
-          <a uib-dropdown-toggle dropdown-text-set href="#/" id="boroughs-menu" >Boroughs <span class="caret" ng-disabled="disabled" ></span> </a>
+          <a uib-dropdown-toggle dropdown-text-set href="#/" id="boroughs-menu" >Boroughs </a>
           <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="boroughs-menu" >
             <li class="menu_item" ng-repeat="borough in boroughs" role="menuitem" ><a ng-href="#/borough/{{borough}}">{{borough}}</a></li>
           </ul>

@@ -15,6 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "ngmap": "^1.17.8"
+    "ngmap": "^1.17.8",
+    "bootstrap-material-design": "^4.0.2"
   }
 }

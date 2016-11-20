@@ -52,7 +52,7 @@ angular.module('myServices')
 
 	function getMarkers() {
 		cleanMarkers();
-		return NgMap.getMap().then( showMarkers )
+		return NgMap.getMap({ id: 'main-map' }).then( showMarkers )
 	}
 
 	$rootScope.setCenter = function( coords ) {
@@ -60,7 +60,7 @@ angular.module('myServices')
   	const [ lat, lng ] = coords;
   	const myLatlng = new google.maps.LatLng(lng, lat);
 
-  	NgMap.getMap()
+  	NgMap.getMap({ id: 'main-map' })
   		.then( map => {
   			map.setZoom(16);
   			map.panTo(myLatlng)
