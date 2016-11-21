@@ -1,12 +1,16 @@
 TO-DO
-  ☐ upload pictures
-  ✔ show update succesfully @done (16-11-20 13:02)
   ☐ show pictures
   ☐ authentication w/ passport & google
+  ☐ mark as favorites per user
+  ☐ upload to heroku & mongolab
+  ☐ show 5 more close restaurants
+  ☐
 
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+ ✔ upload pictures @done (16-11-20 21:44)
+ ✔ show update succesfully @done (16-11-20 13:02)
  ✔ Details Page @done (16-11-20 11:07)
  ✔ new map in details page @done (16-11-20 11:08)
  ✔ Edit page @done (16-11-20 12:13)
