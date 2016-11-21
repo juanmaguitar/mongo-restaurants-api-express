@@ -6,9 +6,10 @@
   "scripts": {
     "devtool": "ENVIRONMENT=development devtool app --watch",
     "dev": "ENVIRONMENT=development nodemon app",
-    "start": "ENVIRONMENT=production node app"
+    "start": "ENVIRONMENT=production node app",
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
-   "engines": {
+  "engines": {
     "node": "6.6.0"
   },
   "keywords": [],
@@ -17,6 +18,7 @@
   "dependencies": {
     "aws-sdk": "^2.7.5",
     "body-parser": "^1.15.2",
+    "bower": "^1.8.0",
     "express": "^4.14.0",
     "merge": "^1.2.0",
     "mongodb": "^2.2.5"
