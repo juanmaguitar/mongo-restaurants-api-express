@@ -3,6 +3,8 @@ const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser')
 const aws = require('aws-sdk');
 
+const config = require('./config');
+
 const getRouterRestaurants = require('./routes/restaurants');
 const getRouterRestaurant = require('./routes/restaurant');
 
@@ -10,6 +12,15 @@ const prepareParams = require('./routes/middleware/prepareParams');
 
 const PORT = 3000;
 const S3_BUCKET = process.env.S3_BUCKET;
+const ENVIRONMENT = process.env.ENVIRONMENT || 'development';
+const urlDB = config[ENVIRONMENT].db;
+
+if (ENVIRONMENT === 'production') {
+	const USER_DB = process.env.USER_DB;
+	const PASS_DB = process.env.PASS_DB;
+	urlDB = urlDB.replace("<%USER_DB%>", USER_DB)
+	urlDB = urlDB.replace("<%PASS_DB%>", PASS_DB)
+}
 
 const app = express();
 
@@ -24,10 +35,7 @@ app.use( bodyParser.json() )
 
 app.use( prepareParams )
 
-// Connection URL
-const url = 'mongodb://localhost:27017/test';
-
-MongoClient.connect(url)
+MongoClient.connect( urlDB )
 	.then( (db) => {
 
 		console.log("Connected to DB...")

@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "devtool": "devtool app --watch",
-    "dev": "nodemon app"
+    "devtool": "ENVIRONMENT=development devtool app --watch",
+    "dev": "ENVIRONMENT=development nodemon app"
   },
   "keywords": [],
   "author": "",
