@@ -6,7 +6,7 @@
   "scripts": {
     "devtool": "ENVIRONMENT=development devtool app --watch",
     "dev": "ENVIRONMENT=development nodemon app",
-    "start": "ENVIRONMENT=production node app",
+    "start": "node app",
     "postinstall": "./node_modules/bower/bin/bower install"
   },
   "engines": {
