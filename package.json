@@ -8,6 +8,9 @@
     "dev": "ENVIRONMENT=development nodemon app",
     "start": "ENVIRONMENT=production node app"
   },
+   "engines": {
+    "node": "6.6.0"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
