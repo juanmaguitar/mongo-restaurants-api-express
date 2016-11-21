@@ -29,6 +29,8 @@ else {
 	console.log("Working in development...")
 }
 
+console.log(`Will connect to DB : ${urlDB}`)
+
 const app = express();
 
 // set folder to serve static files => angular app
