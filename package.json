@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "devtool": "ENVIRONMENT=development devtool app --watch",
-    "dev": "ENVIRONMENT=development nodemon app"
+    "dev": "ENVIRONMENT=development nodemon app",
+    "start": "ENVIRONMENT=production node app"
   },
   "keywords": [],
   "author": "",
