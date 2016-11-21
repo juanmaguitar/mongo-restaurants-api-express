@@ -1,6 +1,6 @@
-function getAll(db, req, res) {
+"use strict";
 
-	"use strict";
+function getAll(db, req, res) {
 
 	const getCursor = req.locals.getCursor;
 
