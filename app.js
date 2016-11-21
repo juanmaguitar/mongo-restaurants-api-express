@@ -12,7 +12,7 @@ const getRouterRestaurant = require('./routes/restaurant');
 
 const prepareParams = require('./routes/middleware/prepareParams');
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const S3_BUCKET = process.env.S3_BUCKET;
 const ENVIRONMENT = process.env.ENVIRONMENT || 'development';
 
