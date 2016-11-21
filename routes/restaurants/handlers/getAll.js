@@ -1,5 +1,7 @@
 function getAll(db, req, res) {
 
+	"use strict";
+
 	const getCursor = req.locals.getCursor;
 
 	const collection = db.collection('restaurants');
