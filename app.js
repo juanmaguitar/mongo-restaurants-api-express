@@ -23,6 +23,10 @@ if (ENVIRONMENT === 'production') {
 	const PASS_DB = process.env.PASS_DB;
 	urlDB = urlDB.replace("<%USER_DB%>", USER_DB)
 	urlDB = urlDB.replace("<%PASS_DB%>", PASS_DB)
+	console.log("Working in production...")
+}
+else {
+	console.log("Working in development...")
 }
 
 const app = express();
