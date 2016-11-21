@@ -1,3 +1,5 @@
+"use strict";
+
 const express = require('express');
 const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser')
@@ -13,7 +15,8 @@ const prepareParams = require('./routes/middleware/prepareParams');
 const PORT = 3000;
 const S3_BUCKET = process.env.S3_BUCKET;
 const ENVIRONMENT = process.env.ENVIRONMENT || 'development';
-const urlDB = config[ENVIRONMENT].db;
+
+let urlDB = config[ENVIRONMENT].db;
 
 if (ENVIRONMENT === 'production') {
 	const USER_DB = process.env.USER_DB;
