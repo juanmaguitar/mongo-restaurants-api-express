@@ -2,3 +2,4 @@ public/bower_components
 node_modules
 *.log
 .cmd
+.env

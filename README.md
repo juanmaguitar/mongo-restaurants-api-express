@@ -43,9 +43,15 @@ Topics covered in this demo:
 
 ## Installation
 
-To run local server...
+To run local server you need to create a `.env` w/ the following variables...
 
-    S3_BUCKET=XXXXXXXXXXXXXXXX AWS_ACCESS_KEY_ID=XXXXXXXXXXXXXXXX AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXX npm run dev
+    S3_BUCKET=XXXXXXXXXXXXXXXX
+    AWS_ACCESS_KEY_ID=XXXXXXXXXXXXXXXX
+    AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXX
+
+With this, to start the project you just can do... 
+
+    npm run dev
 
 To run remotely (in heroku) the proper environment variables should be set before deploying...
 
