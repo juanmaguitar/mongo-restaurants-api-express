@@ -41,7 +41,7 @@ Topics covered in this demo:
 - `bower` to manage client dependencies
 - `npm` to manage server dependencies
 
-## Installation
+## Installation 
 
 To run local server you need to create a `.env` w/ the following variables...
 
@@ -58,8 +58,7 @@ To run remotely (in heroku) the proper environment variables should be set befor
     heroku config:set S3_BUCKET=XXXXXXXXXXXXXXXXXXXXXXXX
     heroku config:set AWS_ACCESS_KEY_ID=XXXXXXXXXXXXXXXXXXXXXXXX
     heroku config:set AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXX
-    heroku config:set USER_DB=XXXXXXXXXXXXXXXXXXXXXXXX
-    heroku config:set PASS_DB=XXXXXXXXXXXXXXXXXXXXXXXX
+    heroku config:set DB_URI=mongodb://<%USER%>:<%PASS%>@XXXXXXXXX.mlab.com:00000/xxxxxxxxxxx
     heroku config:set ENVIRONMENT=production
 
 
