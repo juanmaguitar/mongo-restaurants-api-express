@@ -1,4 +1,4 @@
-public/bower_components
+client/bower_components
 node_modules
 *.log
 .cmd

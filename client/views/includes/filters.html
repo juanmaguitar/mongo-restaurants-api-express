@@ -1,0 +1,30 @@
+<div ng-controller="FiltersCtrl">
+
+      <style>
+        #boroughs { display: inline-block; }
+      </style>
+
+      <div id="boroughs" uib-dropdown is-open="status.boroughs.isopen" >
+        <a uib-dropdown-toggle dropdown-text-set href="#/" id="boroughs-menu" >Select a Borough </a>
+        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="boroughs-menu" >
+          <li class="menu_item" ng-repeat="borough in boroughs" role="menuitem" ><a ng-href="#/borough/{{borough}}">{{borough}}</a></li>
+        </ul>
+      </div>
+
+
+  <form id="cuisines" ng-submit="getByCuisine(cuisine)">
+
+    <input type="text" ng-model="cuisine" placeholder="Cuisine..." uib-typeahead="cuisine for cuisine in cuisines | filter:$viewValue | limitTo:8" class="form-control">
+
+    <p>{{ cuisines | json }}</p>
+
+    <!-- <div class="form-group">
+      <input type="text" ng-model="cuisine" class="form-control" list="cuisines" placeholder="Cuisine...">
+      <datalist id="cuisines">
+        <option ng-repeat="cuisine in cuisines" value="{{ cuisine }}">
+      </datalist>
+    </div> -->
+    <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+  </form>
+
+</div>

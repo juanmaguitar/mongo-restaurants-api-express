@@ -1,1 +1,6 @@
-angular.module('myControllers', ['myServices'])
+angular.module('myControllers', [
+	'ngAnimate',
+  'ngSanitize',
+  'ui.bootstrap',
+  'myServices'
+])

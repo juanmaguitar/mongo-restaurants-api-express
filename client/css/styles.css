@@ -7,6 +7,20 @@ body {
 	margin:0;
 }
 
+#filters {
+	padding: 20px 0;
+}
+
+details {
+	padding:10px;
+	border-bottom:1px solid #ccc;
+}
+
+summary {
+	margin:10px;
+	cursor: pointer;
+}
+
 #results-container, #details-container {
 	display:flex;
 }
@@ -19,6 +33,7 @@ body {
 	margin: 40px 0 20px;
 	border-bottom: 1px solid #ccc;
 	width: 95%;
+
 }
 
 #map {
@@ -29,6 +44,7 @@ body {
 	height:90vh;
 	width: 50%;
 }
+
 .grades h4 {
 	margin-bottom: 20px;
 }
@@ -72,3 +88,45 @@ body {
 	background-position: center center;
 	margin-top:10px;
 }
+
+/* navbar login box */
+ /* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  margin-top: 20px;
+}
+
+/* Flip around the padding for proper display in narrow viewports */
+.navbar-wrapper .container {
+  padding-left: 0;
+  padding-right: 0;
+}
+.navbar-wrapper .navbar {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.navbar-content
+{
+    width:320px;
+    padding: 15px;
+    padding-bottom:0px;
+}
+.navbar-content:before, .navbar-content:after
+{
+    display: table;
+    content: "";
+    line-height: 0;
+}
+.navbar-nav.navbar-right:last-child {
+margin-right: 15px !important;
+}
+.navbar-footer
+{
+    background-color:#DDD;
+}
+.navbar-footer-content { padding:15px 15px 15px 15px; }

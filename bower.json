@@ -17,6 +17,9 @@
   "dependencies": {
     "ngmap": "^1.17.8",
     "bootstrap-material-design": "^4.0.2",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "angular-bootstrap": "^2.2.0",
+    "angular-sanitize": "^1.5.9",
+    "angular-animate": "^1.5.9"
   }
 }

@@ -18,4 +18,7 @@ angular.module('myControllers')
         })
         .then( getMarker.bind(null, "details-map") )
 
+      DataService.getRestaurantsClose( id )
+        .then( console.log )
+
   })
