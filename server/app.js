@@ -2,6 +2,7 @@ const path = require('path')
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const cors = require('cors');
 
 //const passport = require('passport');
 //const GoogleStrategy = require('passport-google-oauth20').Strategy;
@@ -41,7 +42,7 @@ app.use( prepareParams )
 app.use( routerS3 )
 app.use('/restaurants', routerRestaurants )
 app.use('/restaurant', routerRestaurant )
-app.use( '/', routerRoot )
+app.use( '/', cors(), routerRoot )
 
 
 module.exports = app;
