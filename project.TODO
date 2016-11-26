@@ -2,17 +2,17 @@ TO-DO
   ☐ show pictures
   ☐ authentication w/ passport & google
   ☐ mark as favorites per user
-  ✔ upload to heroku & mongolab @done (16-11-23 23:10)
   ☐ show 5 more close restaurants
-  ✔ Mongoose @done (16-11-23 23:15)
 
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+ ✔ Mongoose @done (16-11-23 23:15)
+ ✔ upload to heroku & mongolab @done (16-11-23 23:10)
  ✔ upload pictures @done (16-11-20 21:44)
  ✔ show update succesfully @done (16-11-20 13:02)
- ✔ Details Page @done (16-11-20 11:07)
- ✔ new map in details page @done (16-11-20 11:08)
- ✔ Edit page @done (16-11-20 12:13)
- ✔ edit location in map by drap & drop & getting coordinates @done (16-11-20 12:13)
  ✔ manage dates in mongo (add and read) @done (16-11-20 12:13)
+ ✔ edit location in map by drap & drop & getting coordinates @done (16-11-20 12:13)
+ ✔ Edit page @done (16-11-20 12:13)
+ ✔ new map in details page @done (16-11-20 11:08)
+ ✔ Details Page @done (16-11-20 11:07)

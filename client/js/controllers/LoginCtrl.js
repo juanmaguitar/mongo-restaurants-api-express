@@ -1,5 +1,5 @@
 angular.module('myControllers')
-	.controller('LoginCtrl', function ($scope, $uibModalInstance, data ) {
+	.controller('LoginCtrl', function ($scope, $uibModalInstance, AuthService, data ) {
 
 		console.log("login...")
 		console.log(data)
@@ -9,8 +9,13 @@ angular.module('myControllers')
 	    $uibModalInstance.dismiss('canceled');
 	  }; // end cancel
 
-	 	$scope.save = function() {
-	 		console.log("save...")
+	 	$scope.loginUser = function() {
+
+	 		console.log("login...")
+	 		console.log($scope.user)
+	 		AuthService.login($scope.user)
+	 			.then( console.log )
+
 	    $uibModalInstance.close( $scope.user );
 	  }; // end save
 

@@ -167,6 +167,9 @@ margin-right: 15px !important;
 .form-signin h3 {
   margin-bottom:20px;
 }
+.form-signin a {
+  cursor:pointer;
+}
 .form-signin a.close {
   display:block;
   text-align: right;
