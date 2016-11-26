@@ -2,14 +2,11 @@ const path = require('path')
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-<<<<<<< HEAD
 const cors = require('cors');
 
 //const passport = require('passport');
 //const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
-=======
->>>>>>> filters
 const prepareParams = require('./routes/_middleware/prepareParams');
 
 const routerRestaurants = require('./routes/restaurants');
@@ -29,13 +26,8 @@ app.use( prepareParams )
 
 app.use('/restaurants', routerRestaurants )
 app.use('/restaurant', routerRestaurant )
-<<<<<<< HEAD
-app.use( '/', cors(), routerRoot )
-
-=======
 app.use('/auth', routerAuth )
 app.use('/', routerS3 )
-app.use('/', routerRoot )
->>>>>>> filters
+app.use( '/', cors(), routerRoot )
 
 module.exports = app;
