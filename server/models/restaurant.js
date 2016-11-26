@@ -21,6 +21,6 @@ var RestaurantSchema = new Schema({
 		}],
 }, { collection });
 
-RestaurantSchema.plugin(mongoosePaginate);
+RestaurantSchema.plugin( mongoosePaginate );
 
 module.exports = mongoose.model('Restaurant', RestaurantSchema);

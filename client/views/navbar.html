@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<nav ng-controller="NavBarCtrl" class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -11,8 +11,17 @@
       <a class="navbar-brand" href="#/">Resturants Finder</a>
     </div>
 
+    <style>
+    </style>
+
     <ul class="nav navbar-nav  pull-right">
-      <li class="dropdown" uib-dropdown>
+      <li ng-hide="{{ loggedUser }}">
+          <a id="log-in" ng-click="showModalLogin()"  class="btn btn-primary btn-sm active">Log In</a>
+      </li>
+      <li ng-hide="{{ loggedUser }}">
+          <a id="register" ng-click="showModalRegister()"  class="btn btn-primary btn-sm active">Register</a>
+      </li>
+      <li class="dropdown" uib-dropdown ng-show="{{ loggedUser }}">
         <a href="#" class="dropdown-toggle" uib-dropdown-toggle role="button" aria-expanded="false" ng-init="loggedUser.username='Login'"> {{ loggedUser.username }}</a>
         <ul class="dropdown-menu">
           <li>
@@ -25,8 +34,8 @@
                   <!-- <p class="small" style="text-align: left;"><a href="#">Change Photo</a></p> -->
                 </div>
                 <div class="col-md-7">
-                  <span>{{ $parent.loggedUser.name }}</span>
-                  <p class="text-muted small">{{ $parent.loggedUser.email }}</p>
+                  <span>{{ loggedUser.name }}</span>
+                  <p class="text-muted small">{{ loggedUser.email }}</p>
                   <div class="divider"></div>
                   <a href="#" class="btn btn-primary btn-sm active">View Profile</a>
                 </div>
