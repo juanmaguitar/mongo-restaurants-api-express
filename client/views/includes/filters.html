@@ -1,0 +1,29 @@
+<details ng-controller="FiltersCtrl" id="filters">
+
+  <summary>Filters</summary>
+
+  <div class="row">
+    <div class="col-md-4">
+
+      <div id="boroughs" uib-dropdown is-open="status.boroughs.isopen" >
+        <a uib-dropdown-toggle dropdown-text-set href="#/" id="boroughs-menu" >Select a Borough </a>
+        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="boroughs-menu" >
+          <li class="menu_item" ng-repeat="borough in boroughs" role="menuitem" ><a ng-href="#/borough/{{borough}}">{{borough}}</a></li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="col-md-8">
+        <form id="cuisines" ng-submit="getByCuisine(cuisine)">
+
+    <input type="text" ng-model="cuisine" placeholder="Type a Cuisine..." uib-typeahead="cuisine for cuisine in cuisines | filter:$viewValue | limitTo:8" class="form-control">
+
+  </form>
+
+    </div>
+  </div>
+
+
+
+
+</details>

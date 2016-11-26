@@ -16,7 +16,13 @@
   ],
   "dependencies": {
     "ngmap": "^1.17.8",
+    "underscore": "^1.8.3",
+    "angular-bootstrap": "^2.2.0",
+    "angular-sanitize": "^1.5.9",
+    "angular-animate": "^1.5.9",
+    "bootstrap": "^3.3.7",
+    "angular-route": "^1.5.9",
     "bootstrap-material-design": "^4.0.2",
-    "underscore": "^1.8.3"
+    "angular-dialog-service": "^5.3.0"
   }
 }

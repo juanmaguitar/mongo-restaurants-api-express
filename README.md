@@ -2,7 +2,7 @@
 
 ## Description 
 
-This project is a demo that shows several things explained in the Skylab Coders Bootcamps (Autumn 2016 Edition). It uses the restaurants collection [provided in the official Mongo site](https://docs.mongodb.com/getting-started/shell/import-data/)
+This project is a demo that shows several things explained in the [Skylab Coders](http://www.skylabcoders.com/en/) Bootcamps (Autumn 2016 Edition). It uses the restaurants collection [provided in the official Mongo site](https://docs.mongodb.com/getting-started/shell/import-data/)
 
 Can be seen online at: https://powerful-tundra-88780.herokuapp.com/
 

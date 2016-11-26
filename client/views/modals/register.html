@@ -1,0 +1,30 @@
+<form class="form-signin" ng-submit="createUser()">
+  <a class="close" ng-click="cancel()">[X]</a>
+  <h3 class="form-signin-heading">Create a new user</h3>
+  <p><em>Fields with * are mandatory</em></p>
+
+  <div class="form-group" ng-class="{ 'has-error': errors.usernameExists }">
+    <label class="control-label" for="inputUsername" >User name *</label>
+    <input type="text" id="inputUsername" class="form-control" placeholder="User Name" required autofocus ng-model="user.username">
+    <em ng-show="errors.usernameExists" class="help-block text-right">User Name already registered! </br>Please choose another one.</em>
+  </div>
+
+  <div class="form-group" ng-class="{ 'has-error': errors.mailExists }">
+    <label class="control-label" for="inputEmail" >Email address *</label>
+    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required ng-model="user.email">
+     <em ng-show="errors.mailExists" class="help-block text-right">Mail already registered! </br>Please choose another one.</em>
+  </div>
+
+  <div class="form-group">
+    <label for="inputPassword" >Password *</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required ng-model="user.password">
+  </div>
+
+  <!-- <div class="checkbox">
+    <label>
+      <input type="checkbox" value="remember-me"> Remember me
+    </label>
+  </div> -->
+  <button class="btn btn-lg btn-primary btn-block active" type="submit">Sign Up</button>
+
+</form>

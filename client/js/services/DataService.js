@@ -30,6 +30,12 @@ angular.module('myServices')
 												.then( getPages )
 			}
 
+			function getRestaurantsClose( id ) {
+				const url = `/restaurant/${id}/around/5`;
+				const limit = 5
+				return $http.get( url, { params: { limit } } ).then( d => d.data )
+			}
+
 			function getBoroughs() {
 				const url = '/boroughs';
 				return $http.get( url ).then( d => d.data )
@@ -45,6 +51,7 @@ angular.module('myServices')
 				return $http.get( url ).then( d => d.data )
 			}
 
+
 			function updateRestaurant(id, data) {
 				const url = `/restaurant/${id}`;
 				const method = 'POST';
@@ -54,6 +61,6 @@ angular.module('myServices')
 									.catch( err => console.log("someting went worng w/ the update!") )
 			}
 
-			return { getRestaurants, getBoroughs, getRestaurantsByBorough, getRestaurantsByCuisine, getCuisines, getRestaurantDetails, updateRestaurant }
+			return { getRestaurants, getBoroughs, getRestaurantsByBorough, getRestaurantsByCuisine, getCuisines, getRestaurantDetails, updateRestaurant, getRestaurantsClose }
 
 	})

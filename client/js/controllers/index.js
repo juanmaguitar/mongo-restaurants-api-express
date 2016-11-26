@@ -1,1 +1,3 @@
-angular.module('myControllers', ['myServices'])
+angular.module('myControllers', [
+  'myServices'
+])
