@@ -8,34 +8,36 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#/">Resturants Finder</a>
+      <a class="navbar-brand" href="#/">
+        <img src="/img/logo-restaurants-finder.png" alt="" style="height:100%" class="img-responsive">
+      </a>
     </div>
 
     <style>
     </style>
 
     <ul class="nav navbar-nav  pull-right">
-      <li ng-hide="{{ loggedUser }}">
+      <li ng-hide="loggedUser">
           <a id="log-in" ng-click="showModalLogin()"  class="btn btn-primary btn-sm active">Log In</a>
       </li>
-      <li ng-hide="{{ loggedUser }}">
+      <li ng-hide="loggedUser">
           <a id="register" ng-click="showModalRegister()"  class="btn btn-primary btn-sm active">Register</a>
       </li>
-      <li class="dropdown" uib-dropdown ng-show="{{ loggedUser }}">
-        <a href="#" class="dropdown-toggle" uib-dropdown-toggle role="button" aria-expanded="false" ng-init="loggedUser.username='Login'"> {{ loggedUser.username }}</a>
-        <ul class="dropdown-menu">
+      <li class="dropdown" uib-dropdown ng-show="loggedUser">
+        <a href="#" class="dropdown-toggle" uib-dropdown-toggle role="button" aria-expanded="false"> {{ loggedUser.username }}</a>
+        <ul class="dropdown-menu" style="margin:0; padding:0; ">
           <li>
             <!-- navbar-content -->
             <div class="navbar-content">
               <div class="row">
                 <div class="col-md-5">
-                  <img gravatar-src="$parent.loggedUser.email" gravatar-size="120">
+                  <img gravatar-src="loggedUser.email" gravatar-size="120">
                   <!-- <img src="http://placehold.it/120x120" alt="Alternate Text" class="img-responsive" /> -->
                   <!-- <p class="small" style="text-align: left;"><a href="#">Change Photo</a></p> -->
                 </div>
                 <div class="col-md-7">
                   <span>{{ loggedUser.name }}</span>
-                  <p class="text-muted small">{{ loggedUser.email }}</p>
+                  <p class="small">{{ loggedUser.email }}</p>
                   <div class="divider"></div>
                   <a href="#" class="btn btn-primary btn-sm active">View Profile</a>
                 </div>
@@ -45,10 +47,10 @@
             <div class="navbar-footer">
               <div class="navbar-footer-content">
                 <div class="row">
-                  <div class="col-md-6">
+                  <!-- <div class="col-md-6">
                     <a href="#" class="btn btn-default btn-sm">Change Passowrd</a>
-                  </div>
-                  <div class="col-md-6 foot_style">
+                  </div> -->
+                  <div class="col-md-12">
                     <button ng-click="logout()" class="btn btn-default btn-sm pull-right"><strong>Sign Out</strong></button>
                     <!-- <a href="#" ng-click="logout()" >Sign Out</a> -->
                   </div>

@@ -1,11 +1,12 @@
 angular.module('myControllers')
-  .controller('NavBarCtrl', function ($scope, $rootScope, ModalService) {
+  .controller('NavBarCtrl', function ($scope, $rootScope, ModalService, AuthService) {
+
+    $scope.logout = AuthService.logout;
 
     $scope.showModalLogin = () => {
 
       ModalService.modalLogin()
         .then( (data) => {
-          debugger;
             console.log("result?...")
             console.log(data)
             console.log($rootScope)

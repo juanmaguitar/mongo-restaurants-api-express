@@ -3,5 +3,6 @@ angular.module('myServices', [
   'ngSanitize',
   'ui.bootstrap',
   'dialogs.main',
-  'angular-jwt'
+  'angular-jwt',
+  'ui.gravatar'
   ])

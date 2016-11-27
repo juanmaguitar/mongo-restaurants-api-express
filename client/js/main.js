@@ -32,4 +32,11 @@ angular.module('myApp', [
       });
 
 	})
+  .run( function ( $rootScope, $location, AuthService, StorageService ) {
 
+      if ( AuthService.isLoggedIn() ) {
+        const token = StorageService.readToken();
+        AuthService.setCredentials(token)
+      }
+
+  })
