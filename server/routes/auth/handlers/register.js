@@ -2,10 +2,10 @@ const Account = require('../../../models/account');
 
 function register(passport, req, res) {
 
-  const { username, password } = req.body;
+  const { username, password, email } = req.body;
   // const username = req.body.username;
   // const password = req.body.password;
-  const newUserAccount = new Account({ username });
+  const newUserAccount = new Account({ username, email });
 
   const promisedAccountRegister = (newUserAccount, password) => {
     return new Promise( (resolve, reject) => {

@@ -6,6 +6,8 @@ function login(req, res) {
 		const { username, email } = req.user;
 		userPublicData = { username, email }
 
+		console.log(userPublicData);
+
 		var token = jwt.sign( userPublicData, SECRET, {
 			expiresIn: 86400 // expires in 24 hours
 		});

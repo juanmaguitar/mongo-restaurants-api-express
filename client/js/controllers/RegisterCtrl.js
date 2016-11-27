@@ -17,8 +17,8 @@ angular.module('myControllers')
 
 	 		AuthService.register( $scope.user )
 	 			.then( () => AuthService.login( { username, password } ) )
- 				.then( console.log )
- 				.then( () => $uibModalInstance.close( $scope.user ) )
+	 			.then( d => d.data )
+ 				.then( $uibModalInstance.close )
  				.catch( err => {
  					console.log("Something went wrong!")
  					console.log(err)

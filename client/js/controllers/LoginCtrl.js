@@ -1,22 +1,21 @@
 angular.module('myControllers')
-	.controller('LoginCtrl', function ($scope, $uibModalInstance, AuthService, data ) {
+	.controller('LoginCtrl', function ($scope, $uibModalInstance, AuthService, StorageService, data ) {
 
-		console.log("login...")
-		console.log(data)
-
-		$scope.cancel = function() {
-			console.log("cancel...")
-	    $uibModalInstance.dismiss('canceled');
-	  }; // end cancel
+		$scope.cancel = $uibModalInstance.dismiss;
+		StorageService.setRememberMe( $scope.rememberMe ? true : false );
 
 	 	$scope.loginUser = function() {
 
-	 		console.log("login...")
-	 		console.log($scope.user)
 	 		AuthService.login($scope.user)
-	 			.then( console.log )
+				.then( StorageService.saveToken )
+	    	.then( AuthService.setCredentials )
+		    .then( $uibModalInstance.close )
+		    .catch( (error) => {
+		      const message = error.data.message;
+		      $scope.error = { message }
+		      console.log(error);
+		    })
 
-	    $uibModalInstance.close( $scope.user );
 	  }; // end save
 
 

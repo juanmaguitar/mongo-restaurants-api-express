@@ -5,8 +5,10 @@ angular.module('myControllers')
 
       ModalService.modalLogin()
         .then( (data) => {
+          debugger;
             console.log("result?...")
             console.log(data)
+            console.log($rootScope)
         })
 
     };
