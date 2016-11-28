@@ -2,8 +2,8 @@ angular.module('myControllers')
   .controller('ByBoroughCtrl', function(
     $scope,
     $rootScope,
-    MapService,
     $routeParams,
+    MapService,
     DataService
   ) {
 

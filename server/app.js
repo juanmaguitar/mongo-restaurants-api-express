@@ -4,9 +4,6 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
 
-//const passport = require('passport');
-//const GoogleStrategy = require('passport-google-oauth20').Strategy;
-
 const prepareParams = require('./routes/_middleware/prepareParams');
 
 const routerRestaurants = require('./routes/restaurants');

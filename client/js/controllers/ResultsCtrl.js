@@ -2,7 +2,7 @@ angular.module('myControllers')
   .controller('ResultsCtrl', function(
       $scope,
       $rootScope,
-      $anchorScroll,
+      $window,
       $location,
       DataService,
       MapService
@@ -16,7 +16,8 @@ angular.module('myControllers')
       DataService.getRestaurants(page)
         .then( rests => $rootScope.restaurants = rests )
         .then( MapService.getMarkers )
-        .then( () => window.scrollTo(0, 0) )
+        .then( () => $window.scrollTo(0, 0) )
+        .catch( console.error )
 
     };
 

@@ -27,6 +27,10 @@ angular.module('myApp', [
         templateUrl: 'views/results.html',
         controller: 'ByCuisineCtrl'
       })
+      .when('/profile/edit', {
+        templateUrl: 'views/edit-profile.html',
+        controller: 'EditProfileCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

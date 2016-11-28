@@ -2,14 +2,17 @@ angular.module('myServices')
   .factory("StorageService", function( $window ) {
 
     const keyToken = 'myApp-token';
-    const keyRemember = 'myApp-rememberMe';
+    const keyRemember = 'myApp-rememberMe-storage';
 
     const $localStorage = $window.localStorage;
     const $sessionStorage = $window.sessionStorage;
 
     /* store if using localStorage or sessionStorage */
     const getRememberMe = () => $localStorage[keyRemember]
+    const getStorageMethod = () => getRememberMe() === 'true' ? $localStorage : $sessionStorage;
 
+    // true => localStorage
+    // false => sessionStorage
     const setRememberMe = ( value ) => {
       $localStorage[keyRemember] = value;
       return value;
@@ -17,12 +20,12 @@ angular.module('myServices')
 
     /* token management */
     const readToken = () => {
-      const storage = !!getRememberMe() ? $localStorage : $sessionStorage;
+      const storage = getStorageMethod()
       return storage[keyToken];
     }
 
     const removeToken = () => {
-      const storage = !!getRememberMe() ? $localStorage : $sessionStorage;
+      const storage = getStorageMethod()
       delete storage[keyToken];
     }
 
@@ -30,7 +33,7 @@ angular.module('myServices')
       delete $sessionStorage[keyToken];
       delete $localStorage[keyToken];
 
-      const storage = !!getRememberMe() ? $localStorage : $sessionStorage;
+      const storage = getStorageMethod()
       storage[keyToken] = token;
       return token;
     }

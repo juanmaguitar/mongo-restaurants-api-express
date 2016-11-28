@@ -27,15 +27,16 @@ angular.module('myServices')
 
       StorageService.removeToken();
       delete $rootScope.loggedUser;
-      $location.path( '/' );
+      //$location.path( '/' );
     }
 
     function setCredentials( token ) {
 
       $rootScope.loggedUser = {};
       const tokenPayload = jwtHelper.decodeToken( token );
-      const { username, email } = tokenPayload;
-      $rootScope.loggedUser = { username, email }
+      //console.log(tokenPayload);
+      const { username, email, image, gravatar } = tokenPayload;
+      $rootScope.loggedUser = { username, email, image, gravatar }
       return token;
 
     }

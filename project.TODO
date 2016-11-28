@@ -1,8 +1,14 @@
 TO-DO
   ☐ show pictures
-  ☐ authentication w/ passport & google
+  ☐ Authentication w/ passport local & google
   ☐ mark as favorites per user
   ☐ show 5 more close restaurants
+  ☐ Fix go to top on change page
+  ☐ Session Storage by default
+  ☐ Set constants for SESSION & LOCAL
+  ☐ AWS to move images to an only read folder
+
+
 
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿

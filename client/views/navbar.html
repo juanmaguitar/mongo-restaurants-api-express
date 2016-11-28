@@ -31,7 +31,8 @@
             <div class="navbar-content">
               <div class="row">
                 <div class="col-md-5">
-                  <img gravatar-src="loggedUser.email" gravatar-size="120">
+                  <img ng-src="{{ loggedUser.image || loggedUser.gravatar }}" width="120">
+                  <!-- <img gravatar-src="loggedUser.email" gravatar-size="120"> -->
                   <!-- <img src="http://placehold.it/120x120" alt="Alternate Text" class="img-responsive" /> -->
                   <!-- <p class="small" style="text-align: left;"><a href="#">Change Photo</a></p> -->
                 </div>
@@ -39,7 +40,7 @@
                   <span>{{ loggedUser.name }}</span>
                   <p class="small">{{ loggedUser.email }}</p>
                   <div class="divider"></div>
-                  <a href="#" class="btn btn-primary btn-sm active">View Profile</a>
+                  <a href="#/profile/edit" class="btn btn-primary btn-sm active">Edit Profile</a>
                 </div>
               </div>
             </div>

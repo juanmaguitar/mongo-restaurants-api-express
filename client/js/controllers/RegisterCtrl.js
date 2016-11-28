@@ -19,10 +19,7 @@ angular.module('myControllers')
 	 			.then( () => AuthService.login( { username, password } ) )
 	 			.then( d => d.data )
  				.then( $uibModalInstance.close )
- 				.catch( err => {
- 					console.log("Something went wrong!")
- 					console.log(err)
- 				})
+ 				.catch( console.error )
 	  }; // end save
 
 
