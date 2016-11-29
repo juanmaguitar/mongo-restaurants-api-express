@@ -7,7 +7,7 @@
     "devtool": "devtool index --watch",
     "dev": "nodemon index",
     "start": "node index",
-    "postinstall": "./node_modules/bower/bin/bower install"
+    "postinstall": "bower cache clean && bower install"
   },
   "engines": {
     "node": "6.6.0"
