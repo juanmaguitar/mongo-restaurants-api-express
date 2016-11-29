@@ -1,4 +1,4 @@
-/*! tether 1.3.7 */
+/*! tether 1.3.8 */
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
@@ -108,7 +108,7 @@ var getOrigin = function getOrigin() {
   // are equivilant or not.  We place an element at the top left of the page that will
   // get the same jitter, so we can cancel the two out.
   var node = zeroElement;
-  if (!node) {
+  if (!node || !document.body.contains(node)) {
     node = document.createElement('div');
     node.setAttribute('data-tether-id', uniqueId());
     extend(node.style, {
