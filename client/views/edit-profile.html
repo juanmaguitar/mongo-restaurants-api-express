@@ -1,89 +1,86 @@
-<div class="container" >
+<div id="edit-profile">
   <h1 class="page-header">Edit Profile</h1>
   <div class="row">
     <!-- left column -->
-    <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="col-md-4">
       <div class="text-center">
-        <img ng-src="{{ loggedUser.image || loggedUser.gravatar }}" class="avatar img-circle img-thumbnail">
-
+        <img ng-src="{{ loggedUser.image }}" class="avatar img-circle img-thumbnail">
         <h6>Upload a different photo...</h6>
-        <input type="file" class="text-center center-block well well-sm">
+        <input type="file" custom-on-change="uploadImage"/>
+        <!-- <input type="file" class="text-center center-block well well-sm"> -->
       </div>
     </div>
     <!-- edit form column -->
-    <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+    <div class="col-md-offset-1 col-md-7">
       <!-- <div class="alert alert-info alert-dismissable">
         <a class="panel-close close" data-dismiss="alert">×</a>
         <i class="fa fa-coffee"></i>
         This is an <strong>.alert</strong>. Use this to show important messages to the user.
       </div> -->
-      <h3>Personal info</h3>
-      <form class="form-horizontal" role="form">
+      <!-- <h3>Personal info</h3> -->
+      <form class="form-horizontal" role="form" ng-submit="">
+        <legend>Personal</legend>
         <div class="form-group">
-          <label class="col-lg-3 control-label">First name:</label>
-          <div class="col-lg-8">
-            <input class="form-control" value="Jane" type="text">
+          <label class="col-md-3 control-label">Username:</label>
+          <div class="col-md-9">
+            <input class="form-control" ng-model="loggedUser.username" type="text">
           </div>
         </div>
         <div class="form-group">
-          <label class="col-lg-3 control-label">Last name:</label>
-          <div class="col-lg-8">
-            <input class="form-control" value="Bishop" type="text">
+          <label class="col-md-3 control-label">Full name:</label>
+          <div class="col-md-9">
+            <input class="form-control" ng-model="loggedUser.fullname" placeholder="John Doe" type="text">
           </div>
         </div>
         <div class="form-group">
-          <label class="col-lg-3 control-label">Company:</label>
-          <div class="col-lg-8">
-            <input class="form-control" value="" type="text">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-3 control-label">Email:</label>
-          <div class="col-lg-8">
+          <label class="col-md-3 control-label">Email:</label>
+          <div class="col-md-9">
             <input class="form-control" ng-model="loggedUser.email" type="text">
           </div>
         </div>
-        <div class="form-group">
-          <label class="col-lg-3 control-label">Time Zone:</label>
-          <div class="col-lg-8">
-            <div class="ui-select">
-              <select id="user_time_zone" class="form-control">
-                <option value="Hawaii">(GMT-10:00) Hawaii</option>
-                <option value="Alaska">(GMT-09:00) Alaska</option>
-                <option value="Pacific Time (US & Canada)">(GMT-08:00) Pacific Time (US & Canada)</option>
-                <option value="Arizona">(GMT-07:00) Arizona</option>
-                <option value="Mountain Time (US & Canada)">(GMT-07:00) Mountain Time (US & Canada)</option>
-                <option value="Central Time (US & Canada)" selected="selected">(GMT-06:00) Central Time (US & Canada)</option>
-                <option value="Eastern Time (US & Canada)">(GMT-05:00) Eastern Time (US & Canada)</option>
-                <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
-              </select>
+        <legend>Social</legend>
+        <div class="form-group twitter">
+          <label class="col-md-3 control-label">Twitter:</label>
+          <div class="col-md-8">
+            <div class="input-group">
+              <span class="input-group-addon" id="sizing-addon2">@</span>
+              <input type="text" ng-model="loggedUser.social.twitter" class="form-control" placeholder="johndoe" aria-describedby="sizing-addon2">
             </div>
           </div>
         </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label">Username:</label>
+        <div class="form-group facebook">
+          <label class="col-md-3 control-label">Facebook:</label>
           <div class="col-md-8">
-            <input class="form-control" value="janeuser" type="text">
+            <div class="input-group">
+              <span class="input-group-addon" id="sizing-addon2">facebook.com/</span>
+              <input type="text" ng-model="loggedUser.social.facebook" class="form-control" placeholder="john.doe" aria-describedby="sizing-addon2">
+            </div>
           </div>
         </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label">Password:</label>
+        <div class="form-group twitter">
+          <label class="col-md-3 control-label">Instagram:</label>
           <div class="col-md-8">
-            <input class="form-control" value="11111122333" type="password">
+            <div class="input-group">
+              <span class="input-group-addon" id="sizing-addon2">@</span>
+              <input type="text" ng-model="loggedUser.social.instagram" class="form-control" placeholder="johndoe" aria-describedby="sizing-addon2">
+            </div>
           </div>
         </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label">Confirm password:</label>
+        <div class="form-group linkedin">
+          <label class="col-md-3 control-label">LinkedIn:</label>
           <div class="col-md-8">
-            <input class="form-control" value="11111122333" type="password">
+            <div class="input-group">
+              <span class="input-group-addon" id="sizing-addon2">linkedin.com/in/</span>
+              <input type="text" ng-model="loggedUser.social.linkedin" class="form-control" placeholder="johndoe" aria-describedby="sizing-addon2">
+            </div>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group buttons-section">
           <label class="col-md-3 control-label"></label>
           <div class="col-md-8">
-            <input class="btn btn-primary" value="Save Changes" type="button">
-            <span></span>
-            <input class="btn btn-default" value="Cancel" type="reset">
+
+            <a ng-click="updateData()" class="btn btn-raised  btn-primary">Save</a>
+
           </div>
         </div>
       </form>

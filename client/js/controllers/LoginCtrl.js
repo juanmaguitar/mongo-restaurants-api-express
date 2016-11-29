@@ -12,6 +12,7 @@ angular.module('myControllers')
 		    	.then( AuthService.setCredentials )
 			    .then( $uibModalInstance.close )
 			    .catch( (error) => {
+			    	debugger;
 			      const message = error.data.message;
 			      $scope.error = { message }
 			      console.error(error);

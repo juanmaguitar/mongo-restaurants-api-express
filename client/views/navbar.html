@@ -23,7 +23,7 @@
       <li ng-hide="loggedUser">
           <a id="register" ng-click="showModalRegister()"  class="btn btn-primary btn-sm active">Register</a>
       </li>
-      <li class="dropdown" uib-dropdown ng-show="loggedUser">
+      <li id="profile-box" class="dropdown" uib-dropdown ng-show="loggedUser">
         <a href="#" class="dropdown-toggle" uib-dropdown-toggle role="button" aria-expanded="false"> {{ loggedUser.username }}</a>
         <ul class="dropdown-menu" style="margin:0; padding:0; ">
           <li>
@@ -31,7 +31,7 @@
             <div class="navbar-content">
               <div class="row">
                 <div class="col-md-5">
-                  <img ng-src="{{ loggedUser.image || loggedUser.gravatar }}" width="120">
+                  <img class="profile_image" ng-src="{{ loggedUser.image }}" width="120">
                   <!-- <img gravatar-src="loggedUser.email" gravatar-size="120"> -->
                   <!-- <img src="http://placehold.it/120x120" alt="Alternate Text" class="img-responsive" /> -->
                   <!-- <p class="small" style="text-align: left;"><a href="#">Change Photo</a></p> -->

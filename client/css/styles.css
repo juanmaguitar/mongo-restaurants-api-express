@@ -1,6 +1,5 @@
 body {
-  min-height: 2000px;
-  padding-top: 50px;
+  padding: 50px 0;
 }
 
 body > header {
@@ -173,4 +172,38 @@ margin-right: 15px !important;
 .form-signin a.close {
   display:block;
   text-align: right;
+}
+
+#profile-box .navbar-footer {
+  margin-top: 10px;
+}
+
+#profile-box .profile_image {
+  border:1px solid #ccc;
+}
+
+#edit-profile legend {
+  margin-bottom:20px;
+}
+
+.facebook span {
+  padding: 0 50px;
+}
+
+.linkedin span {
+  padding: 0 55px;
+}
+
+#edit-profile input {
+  color: #000;
+}
+
+#edit-profile .buttons-section {
+  margin-top: 40px;
+}
+
+#edit-profile .avatar {
+  margin-bottom:20px;
+  width:200px;
+  heght:200px;
 }

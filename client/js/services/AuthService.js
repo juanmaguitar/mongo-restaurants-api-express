@@ -34,9 +34,8 @@ angular.module('myServices')
 
       $rootScope.loggedUser = {};
       const tokenPayload = jwtHelper.decodeToken( token );
-      //console.log(tokenPayload);
-      const { username, email, image, gravatar } = tokenPayload;
-      $rootScope.loggedUser = { username, email, image, gravatar }
+      const { username, email, fullname, image, social = {} } = tokenPayload;
+      $rootScope.loggedUser = { username, email, fullname, image, social }
       return token;
 
     }

@@ -1,11 +1,9 @@
 TO-DO
-  ☐ show pictures
-  ☐ Authentication w/ passport local & google
-  ☐ mark as favorites per user
+  ☐ Get data from avatar (images)
+  ☐ Show error when logging & register fails
   ☐ show 5 more close restaurants
-  ☐ Fix go to top on change page
-  ☐ Session Storage by default
-  ☐ Set constants for SESSION & LOCAL
+  ☐ show pictures
+  ☐ mark as favorites per user
   ☐ AWS to move images to an only read folder
 
 
@@ -13,6 +11,10 @@ TO-DO
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+ ✔ Authentication w/ passport local & google @done (16-11-29 10:25)
+ ✔ Fix go to top on change page @done (16-11-29 10:25)
+ ✔ Session Storage by default @done (16-11-29 10:25)
+ ✔ Set constants for SESSION & LOCAL @done (16-11-29 10:25)
  ✔ Mongoose @done (16-11-23 23:15)
  ✔ upload to heroku & mongolab @done (16-11-23 23:10)
  ✔ upload pictures @done (16-11-20 21:44)

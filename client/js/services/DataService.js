@@ -61,6 +61,15 @@ angular.module('myServices')
 									.catch( err => console.log("someting went worng w/ the update!") )
 			}
 
-			return { getRestaurants, getBoroughs, getRestaurantsByBorough, getRestaurantsByCuisine, getCuisines, getRestaurantDetails, updateRestaurant, getRestaurantsClose }
+			function updateUser(username, data) {
+				const url = `/user/${username}`;
+				const method = 'POST';
+				//const headers = { 'Content-Type': 'application/x-www-form-urlencoded' };
+				console.log("updating user: " + username)
+				return $http( { url, method, data } )
+									.catch( err => console.log("someting went worng w/ the update!") )
+			}
+
+			return { getRestaurants, getBoroughs, getRestaurantsByBorough, getRestaurantsByCuisine, getCuisines, getRestaurantDetails, updateRestaurant, getRestaurantsClose, updateUser }
 
 	})

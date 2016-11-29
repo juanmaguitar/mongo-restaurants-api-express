@@ -1,11 +1,12 @@
 const Account = require('../../../models/account');
+const getImageGravatar = require('./getImageGravatar')
 
 function register(passport, req, res) {
 
   const { username, password, email } = req.body;
-  // const username = req.body.username;
-  // const password = req.body.password;
-  const newUserAccount = new Account({ username, email });
+  const image = getImageGravatar(email);
+
+  const newUserAccount = new Account({ username, email, image });
 
   const promisedAccountRegister = (newUserAccount, password) => {
     return new Promise( (resolve, reject) => {
