@@ -1,7 +1,11 @@
 angular.module('myControllers')
-  .controller('NavBarCtrl', function ($scope, $rootScope, ModalService, AuthService) {
+  .controller('NavBarCtrl', function ($scope, $rootScope, $location, ModalService, AuthService) {
 
-    $scope.logout = AuthService.logout;
+    $scope.logout = () => {
+      AuthService.logout();
+      console.log("logout...")
+      $location.path('/')
+    }
 
     $scope.showModalLogin = () => {
 

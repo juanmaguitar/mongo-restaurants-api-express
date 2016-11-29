@@ -24,18 +24,16 @@ angular.module('myServices')
 
 
     function logout() {
-
       StorageService.removeToken();
       delete $rootScope.loggedUser;
-      //$location.path( '/' );
     }
 
     function setCredentials( token ) {
 
       $rootScope.loggedUser = {};
       const tokenPayload = jwtHelper.decodeToken( token );
-      const { username, email, fullname, image, social = {} } = tokenPayload;
-      $rootScope.loggedUser = { username, email, fullname, image, social }
+      const { id, username, email, fullname, image, social = {} } = tokenPayload;
+      $rootScope.loggedUser = { id, username, email, fullname, image, social }
       return token;
 
     }
