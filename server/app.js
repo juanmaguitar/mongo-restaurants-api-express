@@ -9,6 +9,7 @@ const prepareParams = require('./routes/_middleware/prepareParams');
 const routerRestaurants = require('./routes/restaurants');
 const routerRestaurant = require('./routes/restaurant');
 const routerAuth = require('./routes/auth');
+const routerAccount = require('./routes/account');
 const routerS3 = require('./routes/s3');
 const routerRoot = require('./routes/root');
 
@@ -24,6 +25,7 @@ app.use( prepareParams )
 app.use('/restaurants', routerRestaurants )
 app.use('/restaurant', routerRestaurant )
 app.use('/auth', routerAuth )
+app.use('/account', routerAccount )
 app.use('/', routerS3 )
 app.use( '/', cors(), routerRoot )
 

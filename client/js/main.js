@@ -2,8 +2,12 @@ angular.module('myApp', [
     'ngRoute',
     'ngMap',
     'myControllers',
-    'myDirectives'
+    'myDirectives',
+    'myInterceptors'
   ])
+  .config( function ($httpProvider) {
+    $httpProvider.interceptors.push('AuthInterceptor')
+  })
 	.config( function ($routeProvider) {
 
 		$routeProvider

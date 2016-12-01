@@ -207,3 +207,7 @@ margin-right: 15px !important;
   width:200px;
   heght:200px;
 }
+
+#edit-profile .alert-success {
+  margin-bottom:20px;
+}

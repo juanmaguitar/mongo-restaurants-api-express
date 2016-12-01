@@ -1,5 +1,5 @@
 angular.module('myServices')
-  .factory("AuthService", function( $rootScope, $http, $location, StorageService, jwtHelper ) {
+  .factory("AuthService", function( $rootScope, $http, $location, StorageService, AccountService, jwtHelper ) {
 
     function register( userData ) {
       const url = '/auth/register'
@@ -30,10 +30,16 @@ angular.module('myServices')
 
     function setCredentials( token ) {
 
-      $rootScope.loggedUser = {};
-      const tokenPayload = jwtHelper.decodeToken( token );
-      const { id, username, email, fullname, image, social = {} } = tokenPayload;
-      $rootScope.loggedUser = { id, username, email, fullname, image, social }
+//      $rootScope.loggedUser = {};
+      //const tokenPayload = jwtHelper.decodeToken( token );
+      //const { id } = tokenPayload;
+      AccountService.getMe()
+        .then( data => {
+          const { username, email, fullname, social, image } = data;
+          $rootScope.loggedUser = { username, email, fullname, social, image };
+        })
+        .catch( console.error )
+
       return token;
 
     }

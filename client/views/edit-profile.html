@@ -1,6 +1,11 @@
 <div id="edit-profile">
-  <h1 class="page-header">Edit Profile</h1>
+  <h1 class="page-header">Edit Profile: {{loggedUser.username}}</h1>
   <div class="row">
+    <div class="alert alert-success ng-hide" ng-show="message">
+      <button type="button" class="close" data-dismiss="alert" ng-click="message = null" aria-hidden="true">&times;</button>
+      <p><strong>{{ message }}</strong></p>
+    </div>
+
     <!-- left column -->
     <div class="col-md-4">
       <div class="text-center">
@@ -18,7 +23,7 @@
         This is an <strong>.alert</strong>. Use this to show important messages to the user.
       </div> -->
       <!-- <h3>Personal info</h3> -->
-      <form class="form-horizontal" role="form" ng-submit="">
+      <form class="form-horizontal" role="form" ng-submit="updateData(); $event.preventDefault()">
         <legend>Personal</legend>
         <div class="form-group">
           <label class="col-md-3 control-label">Username:</label>
@@ -79,7 +84,7 @@
           <label class="col-md-3 control-label"></label>
           <div class="col-md-8">
 
-            <a ng-click="updateData()" class="btn btn-raised  btn-primary">Save</a>
+            <button type="submit" class="btn btn-raised  btn-primary">Save</button>
 
           </div>
         </div>

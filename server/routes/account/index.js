@@ -1,10 +1,16 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const expressJwt = require('express-jwt') // to verify tokens
 
-var byId = require('./handlers/byId');
-var updateById = require('./handlers/updateById');
+const router = express.Router();
 
-router.get('/:id', byId )
-router.post('/:id', updateById )
+//const byId = require('./handlers/byId');
+const byMe = require('./handlers/byMe');
+const updateByMe = require('./handlers/updateByMe');
+
+const SECRET = process.env.SECRET;
+const jwtAuthMiddleware = expressJwt({ secret: SECRET })
+
+router.get('/me', jwtAuthMiddleware, byMe )
+router.post('/me', jwtAuthMiddleware, updateByMe )
 
 module.exports = router;

@@ -5,8 +5,15 @@ const passportLocalMongoose = require('passport-local-mongoose');
 var Account = new Schema({
     username: String,
     password: String,
+    fullname: String,
     email: String,
-    image: String
+    image: String,
+    social: {
+      facebook: String,
+      twitter: String,
+      instagram: String,
+      linkedin: String
+    }
 });
 
 Account.plugin( passportLocalMongoose );
