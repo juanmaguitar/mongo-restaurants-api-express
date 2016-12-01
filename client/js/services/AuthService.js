@@ -30,9 +30,6 @@ angular.module('myServices')
 
     function setCredentials( token ) {
 
-//      $rootScope.loggedUser = {};
-      //const tokenPayload = jwtHelper.decodeToken( token );
-      //const { id } = tokenPayload;
       AccountService.getMe()
         .then( data => {
           const { username, email, fullname, social, image } = data;

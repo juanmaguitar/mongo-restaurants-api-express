@@ -13,7 +13,8 @@ var Account = new Schema({
       twitter: String,
       instagram: String,
       linkedin: String
-    }
+    },
+    roles: [String]
 });
 
 Account.plugin( passportLocalMongoose );

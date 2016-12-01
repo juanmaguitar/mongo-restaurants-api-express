@@ -1,12 +1,14 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const jwtAuthMiddleware = require('../_middleware/jwtMiddleware')
 
-var byId = require('./handlers/byId');
-var updateById = require('./handlers/updateById');
-var byAround = require('./handlers/byAround');
+const router = express.Router();
+
+const byId = require('./handlers/byId');
+const updateById = require('./handlers/updateById');
+const byAround = require('./handlers/byAround');
 
 router.get('/:id', byId )
-router.post('/:id', updateById )
+router.post('/:id', jwtAuthMiddleware, updateById )
 router.get('/:id/around/:km', byAround )
 
 module.exports = router;
