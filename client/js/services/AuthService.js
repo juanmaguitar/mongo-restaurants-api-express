@@ -42,7 +42,7 @@ angular.module('myServices')
     }
 
     $rootScope.isAdmin = function() {
-      const roles = $rootScope.loggedUser;
+      const {roles} = $rootScope.loggedUser;
       if (!roles) return false
 
       const areRoles = !!roles.length
