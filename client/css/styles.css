@@ -211,3 +211,15 @@ margin-right: 15px !important;
 #edit-profile .alert-success {
   margin-bottom:20px;
 }
+
+.btn-admin {
+  background-color: #337ab7;
+}
+
+.btn-admin > a {
+  color: white !important;
+}
+
+.logo-restaurantsFinder {
+  height:100%
+}

@@ -4,7 +4,7 @@
 
 This project is a demo that shows several things explained in the [Skylab Coders](http://www.skylabcoders.com/en/) Bootcamps (Autumn 2016 Edition). It uses the restaurants collection [provided in the official Mongo site](https://docs.mongodb.com/getting-started/shell/import-data/)
 
-Can be seen online at: https://powerful-tundra-88780.herokuapp.com/
+Can be seen online at: https://restaurantsfinder.herokuapp.com/
 
 ## Topics
 
@@ -30,7 +30,7 @@ Topics covered in this demo:
     + **directives**
     + **services**
     + **routes**
-- Use of **Bootstrap for Angular** `ui.bootstrap`
+- Use of **Bootstrap for Angular** `ui.bootstrap` (Modals, dropdowns...)
 - Results **pagination**
 - **Google Maps**
     + Display coordinates as markers in the map → `marker`
@@ -38,6 +38,9 @@ Topics covered in this demo:
     + Zoom the map for details → `setPan`
     + Draggable marker and capture event and new coordinates → `draggable: true`
 - **Upload images to AWS (S3)** and get remote link to use it in the DB
+- **Login & Register** w/ Passport (Local) & JWT
+    + Remember me → `localStorage` or `sessionStorage`
+- Roles System (admin)
 - `bower` to manage client dependencies
 - `npm` to manage server dependencies
 
@@ -48,6 +51,8 @@ To run local server you need to create a `.env` w/ the following variables...
     S3_BUCKET=XXXXXXXXXXXXXXXX
     AWS_ACCESS_KEY_ID=XXXXXXXXXXXXXXXX
     AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXX
+    DB_URI=mongodb://localhost:27017/XXXXX
+    SECRET=XXXXXXXXXXXXXXXX
 
 With this, to start the project you just can do... 
 
@@ -60,6 +65,7 @@ To run remotely (in heroku) the proper environment variables should be set befor
     heroku config:set AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXX
     heroku config:set DB_URI=mongodb://<%USER%>:<%PASS%>@XXXXXXXXX.mlab.com:00000/xxxxxxxxxxx
     heroku config:set ENVIRONMENT=production
+    heroku config:set SECRET=XXXXXXXXXXXXXXX
 
 
 

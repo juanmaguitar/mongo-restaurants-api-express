@@ -1,6 +1,7 @@
 angular.module('myControllers')
   .controller('EditCtrl', function(
     $scope,
+    $route,
     $rootScope,
     $routeParams,
     $http,
@@ -47,9 +48,13 @@ angular.module('myControllers')
       console.log("updateData... " + id)
       const data = JSON.stringify($scope.restaurant)
       DataService.updateRestaurant( id, data)
-        .then( () => {
-          window.alert("Restaurant data updated succesfully!")
+        .then( (result) => {
+          console.log(result)
           $location.path(`/details/${id}`)
+        })
+        .catch( err => {
+          alert("Someting went wrong w/ the update!")
+          $route.reload()
         })
     }
 

@@ -58,7 +58,6 @@ angular.module('myServices')
 				//const headers = { 'Content-Type': 'application/x-www-form-urlencoded' };
 				console.log("updating restaurant " + id)
 				return $http( { url, method, data } )
-									.catch( err => console.log("someting went worng w/ the update!") )
 			}
 
 			return { getRestaurants, getBoroughs, getRestaurantsByBorough, getRestaurantsByCuisine, getCuisines, getRestaurantDetails, updateRestaurant, getRestaurantsClose }

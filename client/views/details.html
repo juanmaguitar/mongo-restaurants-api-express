@@ -25,7 +25,9 @@
 
 		</div>
 
-		<a href="#/edit/{{ restaurant._id }}" class="btn btn-raised btn-primary">Edit Restaurant</a>
+		<div ng-if="isAdmin()">
+			<a href="#/edit/{{ restaurant._id }}" class="btn btn-raised btn-primary">Edit Restaurant</a>
+		</div>
 
 	</div>
 

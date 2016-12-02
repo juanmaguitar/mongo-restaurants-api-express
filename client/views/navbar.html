@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#/">
-        <img src="/img/logo-restaurants-finder.png" alt="" style="height:100%" class="img-responsive">
+        <img src="/img/logo-restaurants-finder.png" alt="" class="img-responsive logo-restaurantsFinder">
       </a>
     </div>
 
@@ -23,7 +23,7 @@
       <li ng-hide="loggedUser">
           <a id="register" ng-click="showModalRegister()"  class="btn btn-primary btn-sm active">Register</a>
       </li>
-      <li id="profile-box" class="dropdown" uib-dropdown ng-show="loggedUser">
+      <li id="profile-box" ng-class="isAdmin() ? 'btn-admin' : '' " class="dropdown" uib-dropdown ng-show="loggedUser">
         <a href="#" class="dropdown-toggle" uib-dropdown-toggle role="button" aria-expanded="false"> {{ loggedUser.username }}</a>
         <ul class="dropdown-menu" style="margin:0; padding:0; ">
           <li>

@@ -32,13 +32,21 @@ angular.module('myServices')
 
       AccountService.getMe()
         .then( data => {
-          const { username, email, fullname, social, image } = data;
-          $rootScope.loggedUser = { username, email, fullname, social, image };
+          const { username, email, fullname, social, image, roles } = data;
+          $rootScope.loggedUser = { username, email, fullname, social, image, roles };
         })
         .catch( console.error )
 
       return token;
 
+    }
+
+    $rootScope.isAdmin = function() {
+      const roles = $rootScope.loggedUser;
+      if (!roles) return false
+
+      const areRoles = !!roles.length
+      return  areRoles ? roles.indexOf('admin') != -1 : false;
     }
 
     return { register, login, isLoggedIn, logout, setCredentials }
